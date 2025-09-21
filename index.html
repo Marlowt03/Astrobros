@@ -31,14 +31,21 @@
   </header>
 
   <main>
-  <!-- HERO -->
+ <!-- HERO -->
 <section class="hero">
   <div class="video-wrapper" aria-hidden="true">
-    <video id="heroVideo" class="hero-video" autoplay muted playsinline loop preload="auto">
+    <video id="heroVideo"
+           class="hero-video"
+           autoplay
+           muted
+           playsinline
+           webkit-playsinline
+           loop
+           preload="auto">
       <source src="./videos/astrobros_hero.mp4" type="video/mp4" />
-      <!-- Optional:
-      <source src="./videos/astrobros_hero.webm" type="video/webm" />
-      -->
+      <!-- Optional: add a webm if you have one -->
+      <!-- <source src="./videos/astrobros_hero.webm" type="video/webm" /> -->
+      Your browser does not support the video tag.
     </video>
   </div>
 
@@ -55,9 +62,26 @@
 </section>
 
 <script>
-  // Nudge autoplay on some mobile browsers
+  // Try to kick autoplay; if blocked, start on first interaction
   const v = document.getElementById('heroVideo');
-  if (v) { v.muted = true; v.play?.().catch(() => {}); }
+  function tryPlay() {
+    if (!v) return;
+    v.muted = true; // ensure muted stays true
+    const p = v.play?.();
+    if (p && typeof p.catch === 'function') {
+      p.catch(() => {
+        // wait for a tap/click to start playback
+        const onInteract = () => {
+          v.play?.().catch(() => {});
+          window.removeEventListener('click', onInteract);
+          window.removeEventListener('touchstart', onInteract, {passive:true});
+        };
+        window.addEventListener('click', onInteract);
+        window.addEventListener('touchstart', onInteract, {passive:true});
+      });
+    }
+  }
+  document.addEventListener('DOMContentLoaded', tryPlay);
 </script>
 
     <!-- FEATURES -->
