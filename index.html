@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AstroBros &ndash; Out‑of‑This‑World Ice Cream</title>
+  <!-- Import Google Fonts for a modern look -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Site header with logo and navigation -->
+  <header>
+    <nav class="navbar">
+      <a href="index.html" class="logo brand-name">ASTROBROS</a>
+      <ul class="nav-links">
+        <li><a class="active" href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="location.html">Visit</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <!-- Hamburger button for mobile -->
+      <button class="nav-toggle" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero section with promotional video and overlay text -->
+    <section class="hero">
+      <div class="video-wrapper">
+        <!-- Use a locally hosted promotional video instead of YouTube.  This file should be placed in
+             the videos folder and named Astrobros_video.MOV.  The video is muted and loops automatically. -->
+        <video autoplay muted loop playsinline>
+          <source src="videos/Astrobros_video.MOV" type="video/mp4" />
+          <source src="videos/Astrobros_video.MOV" type="video/quicktime" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <!-- Slightly dark overlay to improve text contrast -->
+      <div class="overlay"></div>
+      <div class="hero-content">
+        <h1>Welcome to AstroBros</h1>
+        <p>Out‑of‑this‑world ice cream served fresh in Parma.</p>
+        <div class="hero-buttons">
+          <a class="btn primary" href="menu.html">Explore Our Menu</a>
+          <a class="btn secondary" href="menu.html#stackers">Order Now</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature sections with image and text side by side -->
+    <section class="feature-section">
+      <div class="feature-item">
+        <img src="images/stacker6.png" alt="Signature Stacker" />
+        <div class="feature-text">
+          <h2>Stacker Menu</h2>
+          <p>
+            New to AstroBros, our stacker collection brings towering layers of
+            ice cream, sauces, mix‑ins and whipped cream. Experience decadent
+            combinations like cookie butter, cosmic crunch and more.
+          </p>
+          <a class="btn primary" href="menu.html#stackers">Explore Stackers</a>
+        </div>
+      </div>
+      <div class="feature-item">
+        <img src="images/dubai_strawberry.png" alt="Dubai Chocolate" />
+        <div class="feature-text">
+          <h2>Dubai Chocolate Menu</h2>
+          <p>
+            Our Dubai chocolate collection brings a bold twist to our menu. Enjoy
+            ice cream nachos, brownie blasts, sundae cups and more each infused
+            with rich chocolate and hints of pistachio.
+          </p>
+          <a class="btn primary" href="menu.html#dubai">Explore Dubai</a>
+        </div>
+      </div>
+
+      <!-- Taiyaki feature card -->
+      <div class="feature-item">
+        <img src="images/IMG_9309.PNG" alt="Taiyaki Treats" />
+        <div class="feature-text">
+          <h2>Taiyaki Treats</h2>
+          <p>
+            Delight in our taiyaki fish cones and cups, filled with your favorite
+            ice cream flavours and topped with sweet perfection.
+          </p>
+          <a class="btn primary" href="menu.html#taiyaki">Explore Taiyaki</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Flavor of the Month section -->
+    <section class="flavor-month">
+      <h2>Flavor of the Month</h2>
+      <div class="flavor-card">
+        <!-- Highlight a special flavour from our menu -->
+        <img src="images/ashbys-michigan-pothole-ice-cream.png" alt="Michigan Pothole" />
+        <div class="flavor-text">
+          <h3>Michigan Pothole</h3>
+          <p>
+            A chocolate lover’s dream with chunks of brownie and fudge. Our
+            flavour of the month is rich, indulgent and perfect for autumn.
+          </p>
+          <a class="btn primary" href="menu.html#flavors">Try It Now</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Social media discovery section -->
+    <section class="social-section">
+      <h2>Discover Us on Social Media!</h2>
+      <p>
+        Follow our adventures on social media and see what influencers have to say
+        about our cosmic creations.
+      </p>
+      <!-- Three column layout: influencer video, TikTok card and Instagram card -->
+      <div class="social-cards social-cards-three">
+        <!-- Influencer video card.  The iframe is cropped via CSS to hide the profile header. -->
+        <div class="social-card influencer-card">
+          <div class="embed-wrapper">
+            <iframe
+              src="https://www.instagram.com/p/DNEhRcWp_be/embed"
+              title="Influencer review of AstroBros"
+              frameborder="0"
+              scrolling="no"
+              allowtransparency="true"
+            ></iframe>
+          </div>
+          <h3>Influencer Video</h3>
+          <p>Check out what influencers have to say about us.</p>
+        </div>
+        <!-- TikTok follow card -->
+        <a href="https://www.tiktok.com/@astrobroscafe" class="social-card tiktok-card" target="_blank" rel="noopener">
+          <img src="images/tiktok_logo.svg" alt="TikTok logo" class="social-logo" />
+          <h3>TikTok</h3>
+          <p>@astrobroscafe</p>
+          <span class="btn primary">Follow</span>
+        </a>
+        <!-- Instagram follow card -->
+        <a href="https://www.instagram.com/astrobroscafe/?hl=en" class="social-card instagram-card" target="_blank" rel="noopener">
+          <!-- Use the PNG version of the Instagram logo (copied from user attachment) -->
+          <img src="images/instagram_logo.png" alt="Instagram logo" class="social-logo" />
+          <h3>Instagram</h3>
+          <p>@astrobroscafe</p>
+          <span class="btn primary">Follow</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site footer -->
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025&nbsp;AstroBros Ice Cream &amp; Coffee</p>
+      <!-- Social links removed: the website uses a cleaner footer without extra icons -->
+    </div>
+  </footer>
+
+  <!-- JavaScript for interactive behaviors -->
+  <script src="script.js"></script>
+ </body>
+</html>
