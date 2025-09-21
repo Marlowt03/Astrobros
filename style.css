@@ -1244,3 +1244,14 @@ footer {
 .flavor-card[data-link] {
   cursor: pointer;
 }
+/* Only scale the actual image, not the card */
+.feature-item img,
+.flavor-card img {
+  transition: transform 0.25s ease;
+}
+
+.feature-item img:hover,
+.flavor-card img:hover {
+  transform: scale(1.06);
+  cursor: pointer; /* show click hint */
+}
