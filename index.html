@@ -31,11 +31,9 @@
   </header>
 
   <main>
-<!-- ===== HERO (video .m4v) ===== -->
+ <!-- HERO -->
 <section class="hero">
   <div class="video-wrapper" aria-hidden="true">
-    <!-- Optional: help the browser discover the file sooner -->
-    <link rel="preload" as="video" href="./videos/astrobros_hero.m4v" type="video/mp4">
     <video id="heroVideo"
            class="hero-video"
            autoplay
@@ -44,12 +42,9 @@
            webkit-playsinline
            loop
            preload="auto">
-      <!-- Some browsers accept .m4v as mp4; others prefer x-m4v. Include both declarations. -->
-      <source src="./videos/astrobros_hero.m4v" type="video/mp4" />
-      <source src="./videos/astrobros_hero.m4v" type="video/x-m4v" />
-      <!-- If you later export a webm, add it BEFORE the m4v lines:
-      <source src="./videos/astrobros_hero.webm" type="video/webm" />
-      -->
+      <source src="./videos/astrobros_hero.mp4" type="video/mp4" />
+      <!-- Optional: add a webm if you have one -->
+      <!-- <source src="./videos/astrobros_hero.webm" type="video/webm" /> -->
       Your browser does not support the video tag.
     </video>
   </div>
@@ -67,14 +62,15 @@
 </section>
 
 <script>
-  // Kick autoplay; if blocked (iOS/low power), start on first interaction
+  // Try to kick autoplay; if blocked, start on first interaction
   const v = document.getElementById('heroVideo');
-  function boot() {
+  function tryPlay() {
     if (!v) return;
-    v.muted = true;
+    v.muted = true; // ensure muted stays true
     const p = v.play?.();
     if (p && typeof p.catch === 'function') {
       p.catch(() => {
+        // wait for a tap/click to start playback
         const onInteract = () => {
           v.play?.().catch(() => {});
           window.removeEventListener('click', onInteract);
@@ -85,9 +81,7 @@
       });
     }
   }
-  // Try as soon as possible and again when DOM is ready
-  boot();
-  document.addEventListener('DOMContentLoaded', boot);
+  document.addEventListener('DOMContentLoaded', tryPlay);
 </script>
 
     <!-- FEATURES -->
