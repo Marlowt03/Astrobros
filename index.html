@@ -31,26 +31,34 @@
   </header>
 
   <main>
-    <!-- HERO -->
-    <section class="hero">
-      <div class="video-wrapper">
-        <video class="hero-video" autoplay muted playsinline loop preload="metadata" poster="images/visit_collage.png">
-          <source src="videos/astrobros_hero.mp4" type="video/mp4"/>
-          <!-- Optional: add a webm if you export one
-          <source src="videos/astrobros_hero.webm" type="video/webm"/> -->
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <div class="overlay"></div>
-      <div class="hero-content">
-        <h1>Welcome to AstroBros</h1>
-        <p>Out-of-this-world ice cream served fresh in Parma.</p>
-        <div class="hero-buttons">
-          <a class="btn primary" href="menu.html">Explore Our Menu</a>
-          <a class="btn secondary" href="menu.html#stackers">Order Now</a>
-        </div>
-      </div>
-    </section>
+  <!-- HERO -->
+<section class="hero">
+  <div class="video-wrapper" aria-hidden="true">
+    <video id="heroVideo" class="hero-video" autoplay muted playsinline loop preload="auto">
+      <source src="./videos/astrobros_hero.mp4" type="video/mp4" />
+      <!-- Optional:
+      <source src="./videos/astrobros_hero.webm" type="video/webm" />
+      -->
+    </video>
+  </div>
+
+  <div class="overlay"></div>
+
+  <div class="hero-content">
+    <h1>Welcome to AstroBros</h1>
+    <p>Out-of-this-world ice cream served fresh in Parma.</p>
+    <div class="hero-buttons">
+      <a class="btn primary" href="menu.html">Explore Our Menu</a>
+      <a class="btn secondary" href="menu.html#stackers">Order Now</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Nudge autoplay on some mobile browsers
+  const v = document.getElementById('heroVideo');
+  if (v) { v.muted = true; v.play?.().catch(() => {}); }
+</script>
 
     <!-- FEATURES -->
     <section class="feature-section">
