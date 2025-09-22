@@ -126,26 +126,31 @@ header {
   text-transform: uppercase;
 }
 
-/* Hamburger toggle for mobile */
+/* Hamburger toggle for mobile - iPhone optimized */
 .nav-toggle {
   display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 32px;
-  height: 32px;
+  width: 44px;  /* Increased for better touch target */
+  height: 44px; /* Increased for better touch target */
   background-color: transparent;
   border: none;
   cursor: pointer;
   /* Push the hamburger toggle to the far right of the nav bar when nav items are aligned to the left */
   margin-left: auto;
+  /* Add padding for better touch area */
+  padding: 8px;
+  /* Ensure it's touchable on iOS */
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+  touch-action: manipulation;
 }
 
 .nav-toggle span {
   display: block;
   width: 24px;
   height: 3px;
-  margin: 4px 0;
+  margin: 3px 0;
   background-color: var(--color-brown);
   border-radius: 2px;
   transition: transform var(--transition-time), opacity var(--transition-time);
@@ -162,7 +167,7 @@ header {
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* Responsive menu adjustments */
+/* Responsive menu adjustments - iPhone optimized */
 @media (max-width: 768px) {
   .nav-links {
     position: absolute;
@@ -172,15 +177,35 @@ header {
     flex-direction: column;
     padding: 1rem;
     width: 200px;
-  /* Remove rounded corners on new minimal header */
     box-shadow: var(--shadow-light);
     display: none;
+    /* Ensure menu appears above other content */
+    z-index: 1000;
+    /* Add border for better visibility */
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--radius-small);
+    /* Prevent iOS zoom on focus */
+    -webkit-text-size-adjust: 100%;
   }
   .nav-links.open {
     display: flex;
   }
   .nav-toggle {
     display: flex;
+  }
+  
+  /* Ensure nav links are easily tappable on iPhone */
+  .nav-links li a {
+    padding: 0.75rem 0.5rem;
+    display: block;
+    width: 100%;
+    font-size: 1rem;
+    /* Better touch targets */
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    /* Remove iOS tap highlight */
+    -webkit-tap-highlight-color: transparent;
   }
 }
 
