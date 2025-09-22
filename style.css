@@ -250,6 +250,75 @@ header {
   background-color: var(--color-secondary);
 }
 
+.video-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.video-wrapper iframe {
+  /* Make the embedded video fill the hero section without leaving borders */
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+/* Ensure the locally hosted hero video fills the hero area */
+.video-wrapper video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Apply a slight dark shade over the hero video to improve text contrast without obscuring the footage */
+  /* Increase the opacity of the hero overlay to improve contrast against the video */
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 90%;
+  padding: 0 2rem;
+}
+
+.hero-content h1 {
+  font-size: clamp(2rem, 5vw, 3rem); /* Responsive font size */
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+.hero-content p {
+  font-size: clamp(1rem, 3vw, 1.25rem); /* Responsive font size */
+  margin-bottom: 1.5rem;
+}
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 /* Mobile-specific hero adjustments */
 @media (max-width: 768px) {
   .hero {
@@ -257,13 +326,29 @@ header {
     min-height: 400px;
   }
   
+  .hero-content {
+    padding: 0 1rem;
+  }
+  
   .hero-content h1 {
-    font-size: 2.2rem !important; /* Smaller on mobile */
+    font-size: 2rem;
+    line-height: 1.2;
   }
   
   .hero-content p {
-    font-size: 1.1rem !important; /* Smaller on mobile */
-    padding: 0 1rem;
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  .hero-buttons .btn {
+    width: 200px;
+    text-align: center;
   }
 }
 
@@ -924,29 +1009,33 @@ footer {
   min-height: 40vh;
 }
 .page-hero h1 {
-  font-size: 2.5rem;
+  font-size: clamp(1.8rem, 4vw, 2.5rem); /* Responsive font size */
   margin-bottom: 0.5rem;
+  line-height: 1.2;
 }
 .page-hero p {
-  font-size: 1.2rem;
+  font-size: clamp(0.9rem, 2.5vw, 1.2rem); /* Responsive font size */
   max-width: 700px;
   margin: 0 auto;
+  line-height: 1.4;
 }
 
 /* Mobile page hero adjustments */
 @media (max-width: 768px) {
   .page-hero {
-    padding: 3rem 1rem 2rem;
-    min-height: 30vh;
+    padding: 2rem 1rem 1.5rem;
+    min-height: 25vh;
   }
   
   .page-hero h1 {
-    font-size: 1.8rem !important;
+    font-size: 1.6rem;
+    margin-bottom: 0.75rem;
   }
   
   .page-hero p {
-    font-size: 1rem !important;
+    font-size: 0.95rem;
     line-height: 1.5;
+    padding: 0 0.5rem;
   }
 }
 
