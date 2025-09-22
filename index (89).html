@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AstroBros – Home</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">ASTROBROS</a>
+      <nav class="nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="visit.html">Visit</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="video-wrapper">
+      <video class="hero-video" autoplay muted playsinline loop preload="metadata" poster="images/visit_collage.png">
+        <source src="videos/astrobros_hero.m4v" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="overlay"></div>
+    <div class="hero-content container">
+      <h1>Welcome to AstroBros</h1>
+      <p>Out‑of‑this‑world ice cream served fresh in Parma.</p>
+      <div class="hero-buttons">
+        <a class="btn primary" href="menu.html">Explore Our Menu</a>
+        <a class="btn secondary" href="visit.html#orderSection">Order Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category teaser cards -->
+  <section class="section container category-grid">
+    <a class="category-card" href="menu.html#stackers">
+      <img src="images/stacker-menu.jpg" alt="Stacker Menu" />
+      <div class="content">
+        <h3>Stacker Menu</h3>
+        <p>Layered creations with sauces, mix‑ins and whipped cream.</p>
+        <span class="category-action">Explore Stackers</span>
+      </div>
+    </a>
+    <a class="category-card" href="menu.html#dubai">
+      <img src="images/dubai-menu.jpg" alt="Dubai Chocolate Menu" />
+      <div class="content">
+        <h3>Dubai Chocolate Menu</h3>
+        <p>Nachos, brownie blasts, sundaes and more with rich chocolate.</p>
+        <span class="category-action">Explore Dubai</span>
+      </div>
+    </a>
+    <a class="category-card" href="menu.html#taiyaki">
+      <img src="images/taiyaki-menu.jpg" alt="Taiyaki Treats" />
+      <div class="content">
+        <h3>Taiyaki Treats</h3>
+        <p>Fish‑shaped cones & cups topped to sweet perfection.</p>
+        <span class="category-action">Explore Taiyaki</span>
+      </div>
+    </a>
+  </section>
+
+  <!-- Flavor of the Month -->
+  <section class="section container flavor">
+    <div class="flavor-media">
+      <a href="menu.html#michigan-pothole" class="flavor-img-link">
+        <img src="images/flavor-michigan.jpg" alt="Michigan Pothole" class="flavor-img" />
+      </a>
+    </div>
+    <div class="flavor-copy">
+      <h2>Michigan Pothole</h2>
+      <p>A chocolate lover’s dream with chunks of brownie and fudge.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="visit.html#orderSection">Try It Now</a>
+        <a class="btn link" href="menu.html#michigan-pothole">View on Menu</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="container footer">
+    <small>© AstroBros</small>
+  </footer>
+</body>
+</html>
