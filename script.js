@@ -2,11 +2,8 @@
  * Small helper script for AstroBros website
  *
  * Handles mobile navigation toggling and ensures the hero video
- * attempts to play automatically. Autoplay may be blocked by
- * some browsers; if that happens we attach a user‑gesture listener
- * so that clicking or touching anywhere on the page will start
- * playback. This file intentionally does not implement any custom
- * scrolling offsets because we are using CSS scroll‑margin instead.
+ * attempts to play automatically. Also handles anchor scrolling
+ * with proper offsets for the sticky header.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -45,20 +42,34 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('touchstart', startOnInteract, { passive: true });
   }
 
-  // If the page was loaded with a hash in the URL (e.g. location.html#visit),
-  // ensure that the corresponding element is scrolled into view. Some
-  // browsers do not honour anchor links when margins or other layout
-  // adjustments are applied. Using scrollIntoView here forces the
-  // correct scroll position without adding additional offsets.
-  const hash = window.location.hash;
-  if (hash && hash.length > 1) {
-    const targetId = hash.substring(1);
-    const anchor = document.getElementById(targetId);
-    if (anchor) {
-      // Wait until all resources (fonts, images) have loaded before scrolling
-      window.addEventListener('load', () => {
-        anchor.scrollIntoView({ behavior: 'auto', block: 'start' });
-      });
+  // Anchor scrolling function
+  function scrollToAnchor(hash) {
+    if (!hash) return;
+    
+    const targetId = hash.replace('#', '');
+    const target = document.getElementById(targetId);
+    
+    if (target) {
+      // Wait a bit for any page layout to settle
+      setTimeout(() => {
+        const headerOffset = 140; // Account for sticky header + some padding
+        const targetPosition = target.offsetTop - headerOffset;
+        
+        window.scrollTo({
+          top: Math.max(0, targetPosition),
+          behavior: 'smooth'
+        });
+      }, 100);
     }
   }
+
+  // Handle initial page load with hash
+  if (window.location.hash) {
+    scrollToAnchor(window.location.hash);
+  }
+
+  // Handle hash changes (when clicking anchor links)
+  window.addEventListener('hashchange', () => {
+    scrollToAnchor(window.location.hash);
+  });
 });
