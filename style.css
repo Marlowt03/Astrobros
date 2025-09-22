@@ -178,36 +178,25 @@ header {
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* Responsive menu adjustments - iPhone optimized */
+/* Responsive menu adjustments - Simplified for iPhone */
 @media (max-width: 768px) {
   .nav-links {
     position: absolute;
     top: 100%;
+    left: 0;
     right: 0;
-    left: 0; /* Make it full width for better mobile UX */
     background-color: var(--color-background);
     flex-direction: column;
-    padding: 1rem;
+    padding: 1rem 0;
     width: 100%;
-    box-shadow: var(--shadow-light);
-    /* Hidden by default */
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
-    /* Ensure menu appears above other content */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Simple hide/show - no fancy transitions */
+    display: none;
     z-index: 1000;
-    /* Add border for better visibility */
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 0 0 var(--radius-small) var(--radius-small);
-    /* Prevent iOS zoom on focus */
-    -webkit-text-size-adjust: 100%;
   }
   
   .nav-links.open {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
     display: flex;
   }
   
@@ -215,37 +204,31 @@ header {
     display: flex;
   }
   
-  /* Ensure nav links are easily tappable on iPhone */
+  /* Simple nav link styling */
   .nav-links li {
     width: 100%;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  }
-  
-  .nav-links li:last-child {
-    border-bottom: none;
+    margin: 0;
   }
   
   .nav-links li a {
-    padding: 1rem;
+    padding: 1rem 2rem;
     display: block;
     width: 100%;
     font-size: 1.1rem;
-    text-align: center;
-    /* Better touch targets */
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* Remove iOS tap highlight */
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
-    transition: background-color 0.2s ease;
+    text-align: left;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    color: var(--color-brown);
+    text-decoration: none;
+  }
+  
+  .nav-links li:last-child a {
+    border-bottom: none;
   }
   
   .nav-links li a:hover,
   .nav-links li a.active {
     background-color: rgba(255, 148, 102, 0.1);
     color: var(--color-primary);
-    border-bottom: none;
   }
 }
 
