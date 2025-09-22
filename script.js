@@ -10,33 +10,39 @@ document.addEventListener('DOMContentLoaded', () => {
   // Mobile navigation toggle - iPhone optimized
   const navToggle = document.querySelector('.nav-toggle');
   const navLinks = document.querySelector('.nav-links');
+  
   if (navToggle && navLinks) {
-    // Use both click and touchstart for better iPhone compatibility
+    console.log('Nav elements found'); // Debug log
+    
     const toggleMenu = (e) => {
       e.preventDefault();
       e.stopPropagation();
-      navLinks.classList.toggle('open');
-      navToggle.classList.toggle('open');
+      
+      const isOpen = navLinks.classList.contains('open');
+      console.log('Menu is currently:', isOpen ? 'open' : 'closed'); // Debug log
+      
+      if (isOpen) {
+        navLinks.classList.remove('open');
+        navToggle.classList.remove('open');
+      } else {
+        navLinks.classList.add('open');
+        navToggle.classList.add('open');
+      }
     };
     
+    // Add event listeners
     navToggle.addEventListener('click', toggleMenu);
-    navToggle.addEventListener('touchstart', toggleMenu, { passive: false });
+    navToggle.addEventListener('touchend', toggleMenu, { passive: false });
     
-    // Close menu when clicking outside
+    // Close menu when clicking/touching outside
     document.addEventListener('click', (e) => {
       if (!navToggle.contains(e.target) && !navLinks.contains(e.target)) {
         navLinks.classList.remove('open');
         navToggle.classList.remove('open');
       }
     });
-    
-    // Close menu when touching outside on mobile
-    document.addEventListener('touchstart', (e) => {
-      if (!navToggle.contains(e.target) && !navLinks.contains(e.target)) {
-        navLinks.classList.remove('open');
-        navToggle.classList.remove('open');
-      }
-    }, { passive: true });
+  } else {
+    console.log('Nav elements not found'); // Debug log
   }
 
   // Try to auto‑play the hero video. On some browsers autoplay
