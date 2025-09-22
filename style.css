@@ -29,7 +29,7 @@
   --transition-time: 0.3s;
 }
 
-/* Global resets */
+/* Global resets - Mobile optimized */
 * {
   margin: 0;
   padding: 0;
@@ -42,6 +42,17 @@ body {
   color: var(--color-brown);
   line-height: 1.6;
   overflow-x: hidden;
+  /* Prevent iOS zoom on input focus */
+  -webkit-text-size-adjust: 100%;
+  /* Improve font rendering on mobile */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure all text is properly sized on mobile */
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
 }
 
 a {
@@ -173,46 +184,75 @@ header {
     position: absolute;
     top: 100%;
     right: 0;
+    left: 0; /* Make it full width for better mobile UX */
     background-color: var(--color-background);
     flex-direction: column;
     padding: 1rem;
-    width: 200px;
+    width: 100%;
     box-shadow: var(--shadow-light);
-    display: none;
+    /* Hidden by default */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
     /* Ensure menu appears above other content */
     z-index: 1000;
     /* Add border for better visibility */
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: var(--radius-small);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 var(--radius-small) var(--radius-small);
     /* Prevent iOS zoom on focus */
     -webkit-text-size-adjust: 100%;
   }
+  
   .nav-links.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
     display: flex;
   }
+  
   .nav-toggle {
     display: flex;
   }
   
   /* Ensure nav links are easily tappable on iPhone */
+  .nav-links li {
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  
+  .nav-links li:last-child {
+    border-bottom: none;
+  }
+  
   .nav-links li a {
-    padding: 0.75rem 0.5rem;
+    padding: 1rem;
     display: block;
     width: 100%;
-    font-size: 1rem;
+    font-size: 1.1rem;
+    text-align: center;
     /* Better touch targets */
     min-height: 44px;
     display: flex;
     align-items: center;
+    justify-content: center;
     /* Remove iOS tap highlight */
-    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s ease;
+  }
+  
+  .nav-links li a:hover,
+  .nav-links li a.active {
+    background-color: rgba(255, 148, 102, 0.1);
+    color: var(--color-primary);
+    border-bottom: none;
   }
 }
 
-/* Hero Section */
+/* Hero Section - Mobile optimized */
 .hero {
   position: relative;
-  height: calc(100vh - 80px);
+  height: 100vh; /* Use full viewport height */
   min-height: 500px;
   display: flex;
   align-items: center;
@@ -225,8 +265,23 @@ header {
   background-size: cover;
   background-position: center;
   background-color: var(--color-secondary);
-  /* Fallback background in case the video fails to load */
-  background-color: var(--color-background);
+}
+
+/* Mobile-specific hero adjustments */
+@media (max-width: 768px) {
+  .hero {
+    height: 70vh; /* Reduce height on mobile */
+    min-height: 400px;
+  }
+  
+  .hero-content h1 {
+    font-size: 2.2rem !important; /* Smaller on mobile */
+  }
+  
+  .hero-content p {
+    font-size: 1.1rem !important; /* Smaller on mobile */
+    padding: 0 1rem;
+  }
 }
 
 .video-wrapper {
@@ -567,7 +622,7 @@ footer {
   }
 }
 
-/* Social media section */
+/* Social media section - Mobile optimized */
 .social-section {
   padding: 4rem 2rem;
   text-align: center;
@@ -605,6 +660,35 @@ footer {
   color: inherit;
 }
 
+/* Mobile social section adjustments */
+@media (max-width: 768px) {
+  .social-section {
+    padding: 3rem 1rem;
+  }
+  
+  .social-section h2 {
+    font-size: 2rem;
+  }
+  
+  .social-section p {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+  
+  .social-cards {
+    gap: 1.5rem;
+    /* Ensure cards stack centered on mobile */
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .social-card {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}
+
 /* Layout adjustments for the redesigned social section */
 /* Use a wider ratio for the influencer card (three parts) versus the TikTok card (two parts) */
 .social-cards-two {
@@ -632,10 +716,39 @@ footer {
   max-width: 960px;
   margin: 0 auto;
   justify-content: center;
+  /* Ensure proper alignment on all screen sizes */
+  place-items: center;
 }
+
+/* Mobile-specific social cards adjustments */
 @media (max-width: 900px) {
   .social-cards-three {
     grid-template-columns: 1fr;
+    /* Ensure cards are centered on mobile */
+    justify-items: center;
+    align-items: center;
+    padding: 0 1rem;
+  }
+  
+  /* Make sure individual social cards are centered */
+  .social-card {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 320px;
+  }
+  
+  /* Specific adjustments for influencer card on mobile */
+  .social-card.influencer-card {
+    max-width: 350px;
+    width: 100%;
+  }
+  
+  /* Ensure TikTok and Instagram cards are properly sized and centered */
+  .social-card.tiktok-card,
+  .social-card.instagram-card {
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
   }
 }
 
@@ -648,7 +761,7 @@ footer {
   border-radius: 50%;
 }
 
-/* Embed wrapper to crop the Instagram header from the influencer video */
+/* Embed wrapper to crop the Instagram header from the influencer video - Mobile optimized */
 .social-card.influencer-card .embed-wrapper {
   position: relative;
   width: 100%;
@@ -657,6 +770,9 @@ footer {
   overflow: hidden;
   border-radius: var(--radius-large);
   margin-bottom: 1rem;
+  /* Ensure centering */
+  margin-left: auto;
+  margin-right: auto;
 }
 .social-card.influencer-card .embed-wrapper iframe {
   position: absolute;
@@ -667,6 +783,26 @@ footer {
   width: 100%;
   height: 780px;
   border: none;
+}
+
+/* Mobile adjustments for influencer card */
+@media (max-width: 768px) {
+  .social-card.influencer-card {
+    padding: 1rem;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 320px;
+  }
+  
+  .social-card.influencer-card .embed-wrapper {
+    height: 380px;
+    margin: 0 auto 1rem;
+  }
+  
+  .social-card.influencer-card .embed-wrapper iframe {
+    top: -60px;
+    height: 600px;
+  }
 }
 
 /* TikTok icon styling with a custom gradient similar to the TikTok brand */
@@ -792,13 +928,17 @@ footer {
   }
 }
 
-/* Generic page hero for other pages */
+/* Generic page hero for other pages - Mobile optimized */
 .page-hero {
   /* Remove the swirl background; apply a subtle colour by default */
   background-color: var(--color-secondary);
   color: var(--color-brown);
-  padding: 6rem 2rem 4rem;
+  padding: 4rem 2rem 3rem;
   text-align: center;
+  /* Ensure proper sizing on mobile */
+  background-size: cover;
+  background-position: center;
+  min-height: 40vh;
 }
 .page-hero h1 {
   font-size: 2.5rem;
@@ -808,6 +948,23 @@ footer {
   font-size: 1.2rem;
   max-width: 700px;
   margin: 0 auto;
+}
+
+/* Mobile page hero adjustments */
+@media (max-width: 768px) {
+  .page-hero {
+    padding: 3rem 1rem 2rem;
+    min-height: 30vh;
+  }
+  
+  .page-hero h1 {
+    font-size: 1.8rem !important;
+  }
+  
+  .page-hero p {
+    font-size: 1rem !important;
+    line-height: 1.5;
+  }
 }
 
 /* About page content */
