@@ -210,45 +210,5 @@
 
   <script src="script.js"></script>
 
-
-
-
-<script>
-(function(){
-  var EXTRA_POTHOLE_OFFSET = 1150; // push the Michigan Pothole card further down
-
-  function imagesReady() {
-    var imgs = Array.prototype.slice.call(document.images || []);
-    if (!imgs.length) return Promise.resolve();
-    return Promise.all(imgs.map(function(img){
-      return img.complete ? 1 : new Promise(function(res){ img.addEventListener('load', res, {once:true}); });
-    })).catch(function(){});
-  }
-
-  function scrollToAnchorWithOffset() {
-    var id = decodeURIComponent((location.hash || '').replace('#',''));
-    if (!id) return;
-    var el = document.getElementById(id);
-    if (!el) return;
-    var rectTop = el.getBoundingClientRect().top + window.pageYOffset;
-    var extra = (id === 'michigan-pothole') ? Math.max(EXTRA_POTHOLE_OFFSET, Math.round(window.innerHeight * 0.65)) : Math.round(window.innerHeight * 0.33);
-    var y = Math.max(0, rectTop - extra);
-    window.scrollTo({top: y, left: 0, behavior: 'auto'});
-  }
-
-  function go(){
-    imagesReady().then(function(){ setTimeout(scrollToAnchorWithOffset, 50); });
-  }
-
-  if (document.readyState === 'complete' || document.readyState === 'interactive') {
-    go();
-  } else {
-    window.addEventListener('DOMContentLoaded', go, {once:true});
-  }
-
-  window.addEventListener('hashchange', function(){ setTimeout(scrollToAnchorWithOffset, 0); });
-})();
-</script>
-
 </body>
 </html>
