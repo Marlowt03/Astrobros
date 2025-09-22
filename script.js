@@ -7,13 +7,36 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Mobile navigation toggle
+  // Mobile navigation toggle - iPhone optimized
   const navToggle = document.querySelector('.nav-toggle');
   const navLinks = document.querySelector('.nav-links');
   if (navToggle && navLinks) {
-    navToggle.addEventListener('click', () => {
+    // Use both click and touchstart for better iPhone compatibility
+    const toggleMenu = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
       navLinks.classList.toggle('open');
+      navToggle.classList.toggle('open');
+    };
+    
+    navToggle.addEventListener('click', toggleMenu);
+    navToggle.addEventListener('touchstart', toggleMenu, { passive: false });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!navToggle.contains(e.target) && !navLinks.contains(e.target)) {
+        navLinks.classList.remove('open');
+        navToggle.classList.remove('open');
+      }
     });
+    
+    // Close menu when touching outside on mobile
+    document.addEventListener('touchstart', (e) => {
+      if (!navToggle.contains(e.target) && !navLinks.contains(e.target)) {
+        navLinks.classList.remove('open');
+        navToggle.classList.remove('open');
+      }
+    }, { passive: true });
   }
 
   // Try to auto‑play the hero video. On some browsers autoplay
