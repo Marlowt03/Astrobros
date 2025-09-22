@@ -1,27 +1,17 @@
 /*
- * AstroBros Ice Cream & Coffee
- *
- * This stylesheet defines a cohesive, vibrant look for the AstroBros
- * website. It uses soft pastels, warm neutrals and playful layout
- * elements to evoke an inviting, joyful atmosphere reminiscent of
- * scoops of your favorite ice cream. The navigation adapts to
- * multiple screen sizes, while sections are designed to breathe and
- * guide the user through the site.
+ * AstroBros Ice Cream & Coffee - Complete CSS Rewrite
+ * All components included with working mobile navigation
  */
 
-/* Import the chosen font family */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
-/* CSS variables for easy theming */
+/* CSS Variables */
 :root {
-  /* Updated palette inspired by artisanal ice cream shops */
-  --color-background: #fff4ed; /* soft peach backdrop */
-  --color-surface: #ffffff;    /* pure white for cards */
-  /* Slightly lighter colours for an even brighter palette */
-  --color-primary: #ff9466;    /* light warm orange for primary buttons */
-  --color-secondary: #ffe8d2;  /* very pale orange accent */
-  --color-accent: #d7efe4;     /* lighter mint for highlights */
-  /* Use a softer brown for text, reducing contrast and creating a lighter feel */
+  --color-background: #fff4ed;
+  --color-surface: #ffffff;
+  --color-primary: #ff9466;
+  --color-secondary: #ffe8d2;
+  --color-accent: #d7efe4;
   --color-brown: #4a372e;
   --radius-large: 20px;
   --radius-small: 8px;
@@ -29,11 +19,16 @@
   --transition-time: 0.3s;
 }
 
-/* Global resets - Mobile optimized */
+/* Global Resets */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
 }
 
 body {
@@ -42,17 +37,9 @@ body {
   color: var(--color-brown);
   line-height: 1.6;
   overflow-x: hidden;
-  /* Prevent iOS zoom on input focus */
   -webkit-text-size-adjust: 100%;
-  /* Improve font rendering on mobile */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-/* Ensure all text is properly sized on mobile */
-html {
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
 }
 
 a {
@@ -60,9 +47,8 @@ a {
   text-decoration: none;
 }
 
-/* Navigation bar */
+/* HEADER & NAVIGATION */
 header {
-  /* Keep header background the same as page background */
   background-color: var(--color-background);
   position: sticky;
   top: 0;
@@ -73,19 +59,15 @@ header {
 .navbar {
   display: flex;
   align-items: center;
-  /* Place the brand and navigation links together on the left; the menu toggle stays on the far right */
   justify-content: flex-start;
   padding: 1rem 2rem;
   position: relative;
   overflow: visible;
-  /* Set nav bar to a bright yellow gradient and apply a wavy bottom edge */
   background: linear-gradient(90deg, #ffe394, #fcd34d);
   border-bottom: none;
-  /* Create a wavy bottom border using clip-path */
   clip-path: polygon(0 0, 100% 0, 100% 80%, 95% 90%, 85% 85%, 75% 95%, 65% 85%, 55% 95%, 45% 85%, 35% 95%, 20% 90%, 0 80%);
 }
 
-/* Decorative pastel shapes behind the navigation */
 .navbar::before {
   content: "";
   position: absolute;
@@ -93,10 +75,8 @@ header {
   left: -40px;
   right: -40px;
   bottom: -20px;
-  /* Hide the decorative background on the nav bar now that we use a solid colour */
   content: none;
   z-index: -1;
-  /* Lower the opacity of the decorative shapes so the colours feel lighter */
   opacity: 0.65;
 }
 
@@ -109,7 +89,6 @@ header {
   list-style: none;
   display: flex;
   gap: 1.5rem;
-  /* Position the nav links to the right of the brand */
   margin-left: 2rem;
 }
 
@@ -127,9 +106,6 @@ header {
   border-bottom: 2px solid var(--color-primary);
 }
 
-/* Sticker icons in the nav bar */
-
-/* Brand name styling */
 .brand-name {
   font-size: 2rem;
   font-weight: 700;
@@ -137,29 +113,26 @@ header {
   text-transform: uppercase;
 }
 
-/* Hamburger toggle for mobile - iPhone optimized */
+/* Hamburger toggle for mobile */
 .nav-toggle {
   display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 44px;  /* Increased for better touch target */
-  height: 44px; /* Increased for better touch target */
+  width: 50px;
+  height: 50px;
   background-color: transparent;
   border: none;
   cursor: pointer;
-  /* Push the hamburger toggle to the far right of the nav bar when nav items are aligned to the left */
   margin-left: auto;
-  /* Add padding for better touch area */
-  padding: 8px;
-  /* Ensure it's touchable on iOS */
+  padding: 10px;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
   touch-action: manipulation;
 }
 
 .nav-toggle span {
   display: block;
-  width: 24px;
+  width: 25px;
   height: 3px;
   margin: 3px 0;
   background-color: var(--color-brown);
@@ -178,74 +151,66 @@ header {
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* Responsive menu adjustments - Simplified for iPhone */
+/* Mobile Navigation */
 @media (max-width: 768px) {
   .nav-links {
-    position: absolute;
-    top: 100%;
+    position: fixed;
+    top: 0;
     left: 0;
     right: 0;
+    bottom: 0;
     background-color: var(--color-background);
     flex-direction: column;
-    padding: 1rem 0;
-    width: 100%;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    /* Simple hide/show - no fancy transitions */
-    display: none;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin: 0;
+    padding: 2rem;
     z-index: 1000;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
   }
   
-@media (max-width: 768px) {
   .nav-links.open {
-    display: flex !important;
-    position: absolute !important;
-    top: 100% !important;
-    left: 0 !important;
-    right: 0 !important;
-    background-color: var(--color-background) !important;
-    flex-direction: column !important;
-    z-index: 1000 !important;
-    width: 100% !important;
+    opacity: 1;
+    visibility: visible;
   }
-}
   
   .nav-toggle {
     display: flex;
+    z-index: 1001;
   }
   
-  /* Simple nav link styling */
   .nav-links li {
-    width: 100%;
+    width: auto;
     margin: 0;
   }
   
   .nav-links li a {
-    padding: 1rem 2rem;
     display: block;
-    width: 100%;
-    font-size: 1.1rem;
-    text-align: left;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    text-align: center;
     color: var(--color-brown);
     text-decoration: none;
-  }
-  
-  .nav-links li:last-child a {
+    border-radius: 10px;
+    transition: all 0.3s ease;
     border-bottom: none;
   }
   
   .nav-links li a:hover,
   .nav-links li a.active {
-    background-color: rgba(255, 148, 102, 0.1);
-    color: var(--color-primary);
+    background-color: var(--color-primary);
+    color: white;
+    border-bottom: none;
   }
 }
 
-/* Hero Section - Mobile optimized */
+/* HERO SECTION */
 .hero {
   position: relative;
-  height: 100vh; /* Use full viewport height */
+  height: 100vh;
   min-height: 500px;
   display: flex;
   align-items: center;
@@ -253,7 +218,6 @@ header {
   text-align: center;
   color: #ffffff;
   overflow: hidden;
-  /* Fallback image when the video is not visible */
   background-image: url('images/open_sign.jpg');
   background-size: cover;
   background-position: center;
@@ -271,7 +235,6 @@ header {
 }
 
 .video-wrapper iframe {
-  /* Make the embedded video fill the hero section without leaving borders */
   width: 100%;
   height: 100%;
   position: absolute;
@@ -280,107 +243,6 @@ header {
   pointer-events: none;
 }
 
-/* Ensure the locally hosted hero video fills the hero area */
-.video-wrapper video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: cover;
-  pointer-events: none;
-}
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  /* Apply a slight dark shade over the hero video to improve text contrast without obscuring the footage */
-  /* Increase the opacity of the hero overlay to improve contrast against the video */
-  background-color: rgba(0, 0, 0, 0.4);
-  z-index: 1;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 90%;
-  padding: 0 2rem;
-}
-
-.hero-content h1 {
-  font-size: clamp(2rem, 5vw, 3rem); /* Responsive font size */
-  font-weight: 700;
-  margin-bottom: 0.75rem;
-}
-.hero-content p {
-  font-size: clamp(1rem, 3vw, 1.25rem); /* Responsive font size */
-  margin-bottom: 1.5rem;
-}
-.hero-buttons {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-/* Mobile-specific hero adjustments */
-@media (max-width: 768px) {
-  .hero {
-    height: 70vh; /* Reduce height on mobile */
-    min-height: 400px;
-  }
-  
-  .hero-content {
-    padding: 0 1rem;
-  }
-  
-  .hero-content h1 {
-    font-size: 2rem;
-    line-height: 1.2;
-  }
-  
-  .hero-content p {
-    font-size: 1rem;
-    line-height: 1.4;
-  }
-  
-  .hero-buttons {
-    flex-direction: column;
-    align-items: center;
-    gap: 0.75rem;
-  }
-  
-  .hero-buttons .btn {
-    width: 200px;
-    text-align: center;
-  }
-}
-
-.video-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: 0;
-}
-
-.video-wrapper iframe {
-  /* Make the embedded video fill the hero section without leaving borders */
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-}
-
-/* Ensure the locally hosted hero video fills the hero area */
 .video-wrapper video {
   position: absolute;
   top: 0;
@@ -388,6 +250,7 @@ header {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center center;
   pointer-events: none;
 }
 
@@ -397,8 +260,6 @@ header {
   left: 0;
   width: 100%;
   height: 100%;
-  /* Apply a slight dark shade over the hero video to improve text contrast without obscuring the footage */
-  /* Increase the opacity of the hero overlay to improve contrast against the video */
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 1;
 }
@@ -415,10 +276,12 @@ header {
   font-weight: 700;
   margin-bottom: 0.75rem;
 }
+
 .hero-content p {
   font-size: 1.25rem;
   margin-bottom: 1.5rem;
 }
+
 .hero-buttons {
   display: flex;
   gap: 1rem;
@@ -426,7 +289,40 @@ header {
   flex-wrap: wrap;
 }
 
-/* Button styles */
+/* Mobile hero adjustments */
+@media (max-width: 768px) {
+  .hero {
+    height: 50vh;
+    min-height: 300px;
+  }
+  
+  .hero-content {
+    padding: 0 1rem;
+  }
+  
+  .hero-content h1 {
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+  
+  .hero-content p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  .hero-buttons .btn {
+    width: 200px;
+    text-align: center;
+  }
+}
+
+/* BUTTON STYLES */
 .btn {
   display: inline-block;
   padding: 0.75rem 1.5rem;
@@ -441,8 +337,8 @@ header {
   background-color: var(--color-primary);
   color: #ffffff;
 }
+
 .btn.primary:hover {
-  /* Slightly darker orange on hover */
   background-color: #d76c3f;
 }
 
@@ -451,6 +347,7 @@ header {
   color: var(--color-primary);
   border: 2px solid var(--color-primary);
 }
+
 .btn.secondary:hover {
   background-color: var(--color-primary);
   color: #ffffff;
@@ -461,7 +358,7 @@ header {
   padding: 0.5rem 1rem;
 }
 
-/* Feature cards section */
+/* FEATURE CARDS SECTION */
 .feature-cards {
   display: flex;
   flex-wrap: wrap;
@@ -482,14 +379,17 @@ header {
   flex-direction: column;
   text-align: left;
 }
+
 .card:hover {
   transform: translateY(-6px);
 }
+
 .card img {
   width: 100%;
   height: 220px;
   object-fit: cover;
 }
+
 .card-body {
   padding: 1.25rem;
   flex-grow: 1;
@@ -497,26 +397,28 @@ header {
   flex-direction: column;
   justify-content: space-between;
 }
+
 .card-body h3 {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
 }
+
 .card-body p {
   font-size: 0.95rem;
   flex-grow: 1;
   margin-bottom: 1rem;
   color: #6d5847;
 }
+
 .card-body .btn {
   align-self: start;
 }
 
-/* Promo section */
+/* PROMO SECTION */
 .promo {
   position: relative;
   padding: 4rem 2rem;
   text-align: center;
-  /* Use a simple background colour for the promo section */
   background-color: var(--color-secondary);
   color: var(--color-brown);
 }
@@ -525,6 +427,7 @@ header {
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
 }
+
 .promo p {
   font-size: 1.1rem;
   margin-bottom: 2rem;
@@ -553,34 +456,210 @@ header {
   justify-content: center;
   text-decoration: none;
 }
+
 .promo-link:hover {
   transform: translateY(-4px);
 }
+
 .promo-link img {
   width: 48px;
   height: 48px;
   margin-bottom: 0.5rem;
 }
 
-/* Footer */
-footer {
-  /* Use a cheerful gradient that complements the yellow nav bar */
-  background: linear-gradient(90deg, #ffe394, #fcd1e0, #d3f0f2);
-  color: var(--color-brown);
-  padding: 2rem;
-  text-align: center;
+/* SPLIT LAYOUT SECTIONS */
+.split-layout {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 70vh;
+  width: 100%;
 }
 
-/* Flavor of the Month section */
+.split-layout.reverse {
+  flex-direction: row-reverse;
+}
+
+.split {
+  flex: 1 1 50%;
+  min-height: 400px;
+}
+
+.split-image {
+  background-size: cover;
+  background-position: center;
+}
+
+.split-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem 2rem;
+  background-color: var(--color-background);
+}
+
+.split-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-brown);
+}
+
+.split-text p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: #6d5847;
+}
+
+@media (max-width: 768px) {
+  .split {
+    flex: 1 1 100%;
+  }
+}
+
+/* FEATURE SECTION FOR HOME PAGE */
+.feature-section {
+  padding: 4rem 2rem;
+  background-color: var(--color-background);
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  align-items: stretch;
+}
+
+@media (max-width: 1100px) {
+  .features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .features {
+    grid-template-columns: 1fr;
+  }
+}
+
+.features .feature-item {
+  display: grid;
+  grid-template-columns: 40% 1fr;
+  gap: 1.25rem;
+  align-items: center;
+  background: var(--color-surface);
+  border-radius: var(--radius-large);
+  box-shadow: var(--shadow-light);
+  padding: 1.5rem;
+  width: 100%;
+}
+
+@media (max-width: 720px) {
+  .features .feature-item {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
+.features .feature-item > a {
+  display: block;
+}
+
+.features .feature-item img {
+  width: 100%;
+  height: auto;
+  max-height: 260px;
+  object-fit: contain;
+  transition: transform 0.25s ease;
+}
+
+.features .feature-item img:hover {
+  transform: scale(1.08);
+  cursor: pointer;
+}
+
+.features .feature-text {
+  text-align: left;
+  max-width: 36ch;
+}
+
+@media (max-width: 720px) {
+  .features .feature-text {
+    text-align: center;
+    max-width: none;
+  }
+}
+
+.feature-item {
+  display: flex;
+  flex: 1 1 30%;
+  align-items: center;
+  gap: 2rem;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-large);
+  padding: 2rem;
+  box-shadow: var(--shadow-light);
+}
+
+.feature-item img {
+  flex: 0 0 40%;
+  max-width: 40%;
+  height: auto;
+  border-radius: var(--radius-small);
+  object-fit: cover;
+  transition: transform 0.25s ease;
+}
+
+.feature-item:hover img {
+  transform: scale(1.04);
+}
+
+.feature-text {
+  flex: 1;
+  max-width: 520px;
+}
+
+.feature-text h2 {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.feature-text p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: #6d5847;
+}
+
+.feature-text .btn {
+  width: fit-content;
+}
+
+@media (max-width: 900px) {
+  .feature-item {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .feature-item img {
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .feature-text {
+    width: 100%;
+  }
+}
+
+/* FLAVOR OF THE MONTH SECTION */
 .flavor-month {
   padding: 4rem 2rem;
   text-align: center;
   background-color: var(--color-background);
 }
+
 .flavor-month h2 {
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
 }
+
 .flavor-card {
   display: flex;
   flex-wrap: wrap;
@@ -594,132 +673,62 @@ footer {
   max-width: 900px;
   margin: 0 auto;
 }
+
 .flavor-card img {
   width: 280px;
   height: auto;
   object-fit: contain;
   border-radius: var(--radius-small);
+  transition: transform 0.25s ease;
 }
+
+.flavor-card img:hover {
+  transform: scale(1.04);
+}
+
 .flavor-text {
   flex: 1;
   max-width: 480px;
   text-align: left;
 }
+
 .flavor-text h3 {
   font-size: 1.8rem;
   margin-bottom: 0.5rem;
 }
+
 .flavor-text p {
   font-size: 1rem;
   margin-bottom: 1rem;
   color: #6d5847;
 }
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-.footer-content p {
-  margin-bottom: 1rem;
-}
-.social-links {
-  display: flex;
-  gap: 1rem;
-}
-.social-links img {
-  width: 28px;
-  height: 28px;
-}
 
-/* Split layout sections (image and text side by side) */
-.split-layout {
-  display: flex;
-  flex-wrap: wrap;
-  min-height: 70vh;
-  width: 100%;
-}
-
-/* Feature section for home page (image and text side-by-side) */
-.feature-section {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  padding: 4rem 2rem;
-  background-color: var(--color-background);
-}
-.feature-item {
-  display: flex;
-  /* Allow up to three feature cards per row on large screens */
-  flex: 1 1 30%;
-  align-items: center;
-  gap: 2rem;
-  background-color: var(--color-surface);
-  border-radius: var(--radius-large);
-  padding: 2rem;
-  box-shadow: var(--shadow-light);
-}
-.feature-item img {
-  flex: 0 0 40%;
-  max-width: 40%;
-  height: auto;
-  border-radius: var(--radius-small);
-  object-fit: cover;
-}
-.feature-text {
-  flex: 1;
-}
-.feature-text h2 {
-  font-size: 2rem;
-  margin-bottom: 0.75rem;
-}
-.feature-text p {
-  font-size: 1rem;
-  margin-bottom: 1.5rem;
-  color: #6d5847;
-}
-.feature-text .btn {
-  width: fit-content;
-}
-
-@media (max-width: 900px) {
-  .feature-item {
-    flex-direction: column;
-    text-align: center;
-  }
-  .feature-item img {
-    max-width: 100%;
-    width: 100%;
-  }
-  .feature-text {
-    width: 100%;
-  }
-}
-
-/* Social media section - Mobile optimized */
+/* SOCIAL MEDIA SECTION */
 .social-section {
   padding: 4rem 2rem;
   text-align: center;
   background-color: var(--color-background);
 }
+
 .social-section h2 {
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
 }
+
 .social-section p {
   font-size: 1.1rem;
   max-width: 600px;
   margin: 0 auto 2rem;
   color: #6d5847;
 }
+
 .social-cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
 }
+
 .social-card {
   background-color: var(--color-surface);
   border-radius: var(--radius-large);
@@ -736,7 +745,56 @@ footer {
   color: inherit;
 }
 
-/* Mobile social section adjustments */
+/* Layout adjustments for the redesigned social section */
+.social-cards-two {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 1rem;
+}
+
+@media (max-width: 900px) {
+  .social-cards-two {
+    grid-template-columns: 1fr;
+  }
+}
+
+.social-cards-three {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  max-width: 960px;
+  margin: 0 auto;
+  justify-content: center;
+  place-items: center;
+}
+
+@media (max-width: 900px) {
+  .social-cards-three {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    align-items: center;
+    padding: 0 1rem;
+  }
+  
+  .social-card {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 320px;
+  }
+  
+  .social-card.influencer-card {
+    max-width: 350px;
+    width: 100%;
+  }
+  
+  .social-card.tiktok-card,
+  .social-card.instagram-card {
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+}
+
 @media (max-width: 768px) {
   .social-section {
     padding: 3rem 1rem;
@@ -750,86 +808,8 @@ footer {
     font-size: 1rem;
     padding: 0 1rem;
   }
-  
-  .social-cards {
-    gap: 1.5rem;
-    /* Ensure cards stack centered on mobile */
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .social-card {
-    width: 100%;
-    max-width: 300px;
-    margin: 0 auto;
-  }
 }
 
-/* Layout adjustments for the redesigned social section */
-/* Use a wider ratio for the influencer card (three parts) versus the TikTok card (two parts) */
-.social-cards-two {
-  display: grid;
-  grid-template-columns: 3fr 2fr;
-  /* Reduce the spacing between the influencer and TikTok cards so they sit closer together */
-  gap: 1rem;
-}
-@media (max-width: 900px) {
-  .social-cards-two {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Layout for three social cards used on the home page (influencer, TikTok, Instagram).
-   The influencer card takes twice the width of a single social card, while the
-   TikTok and Instagram cards share equal width. On smaller screens, the cards
-   stack vertically. */
-.social-cards-three {
-  display: grid;
-  /* Use auto-fit columns so the cards line up evenly and centre within the available space */
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-  /* Center the three social cards horizontally and limit their maximum width */
-  max-width: 960px;
-  margin: 0 auto;
-  justify-content: center;
-  /* Ensure proper alignment on all screen sizes */
-  place-items: center;
-}
-
-/* Mobile-specific social cards adjustments */
-@media (max-width: 900px) {
-  .social-cards-three {
-    grid-template-columns: 1fr;
-    /* Ensure cards are centered on mobile */
-    justify-items: center;
-    align-items: center;
-    padding: 0 1rem;
-  }
-  
-  /* Make sure individual social cards are centered */
-  .social-card {
-    margin: 0 auto;
-    width: 100%;
-    max-width: 320px;
-  }
-  
-  /* Specific adjustments for influencer card on mobile */
-  .social-card.influencer-card {
-    max-width: 350px;
-    width: 100%;
-  }
-  
-  /* Ensure TikTok and Instagram cards are properly sized and centered */
-  .social-card.tiktok-card,
-  .social-card.instagram-card {
-    width: 100%;
-    max-width: 280px;
-    margin: 0 auto;
-  }
-}
-
-/* Generic logo styling for the TikTok and Instagram cards.  Logos are sized and centered
-   similarly to the previous gradient icons. */
 .social-logo {
   width: 90px;
   height: 90px;
@@ -837,23 +817,19 @@ footer {
   border-radius: 50%;
 }
 
-/* Embed wrapper to crop the Instagram header from the influencer video - Mobile optimized */
 .social-card.influencer-card .embed-wrapper {
   position: relative;
   width: 100%;
-  /* Increase the height further to show more of the Instagram video */
   height: 450px;
   overflow: hidden;
   border-radius: var(--radius-large);
   margin-bottom: 1rem;
-  /* Ensure centering */
   margin-left: auto;
   margin-right: auto;
 }
+
 .social-card.influencer-card .embed-wrapper iframe {
   position: absolute;
-  /* Shift the embedded Instagram video up slightly and increase its height so the profile bar and buttons
-     are mostly hidden while retaining more of the video content. */
   top: -80px;
   left: 0;
   width: 100%;
@@ -861,7 +837,6 @@ footer {
   border: none;
 }
 
-/* Mobile adjustments for influencer card */
 @media (max-width: 768px) {
   .social-card.influencer-card {
     padding: 1rem;
@@ -881,23 +856,12 @@ footer {
   }
 }
 
-/* TikTok icon styling with a custom gradient similar to the TikTok brand */
-.social-image.tiktok-icon {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  margin-bottom: 1rem;
-  background: radial-gradient(circle, #ee1d52 0%, #69c9d0 100%);
-}
-
-/* Adjust sizing for the influencer and TikTok cards */
 .social-card.influencer-card {
   flex: 1;
-  /* Add a bit of top margin so the embedded post sits lower in the layout */
   margin-top: 0.5rem;
+  padding: 1rem;
 }
-/* Give both TikTok and Instagram cards the same dimensions and layout.  Use flex to
-   evenly distribute content vertically so they match heights. */
+
 .social-card.tiktok-card,
 .social-card.instagram-card {
   max-width: 300px;
@@ -910,30 +874,24 @@ footer {
   justify-content: space-between;
 }
 
-/* Hide the small smartphone/social icon in the footer */
-.footer-content .social-links img {
-  display: none;
-}
-
-/* For influencer cards that contain an embedded video instead of an icon */
-.social-card.influencer-card {
-  padding: 1rem;
-}
 .social-embed {
   width: 100%;
   border-radius: var(--radius-large);
   overflow: hidden;
   margin-bottom: 1rem;
 }
+
 .social-embed iframe {
   width: 100%;
   height: 320px;
   border: none;
   overflow: hidden;
 }
+
 .social-card:hover {
   transform: translateY(-4px);
 }
+
 .social-image {
   width: 90px;
   height: 90px;
@@ -943,13 +901,24 @@ footer {
   align-items: center;
   justify-content: center;
 }
+
 .social-image.instagram-icon {
   background: radial-gradient(circle, #feda75 0%, #d62976 50%, #962fbf 100%);
 }
+
+.social-image.tiktok-icon {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  background: radial-gradient(circle, #ee1d52 0%, #69c9d0 100%);
+}
+
 .social-image.influencer-video {
   background: radial-gradient(circle, #79c7e6 0%, #4facfe 50%, #00f2fe 100%);
   position: relative;
 }
+
 .social-image.influencer-video::after {
   content: '';
   width: 0;
@@ -958,96 +927,97 @@ footer {
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
 }
+
 .social-card h3 {
   font-size: 1.3rem;
   margin: 0;
 }
+
 .social-card p {
   font-size: 0.9rem;
   margin: 0;
   color: #6d5847;
 }
+
 .social-card .btn {
   margin-top: 1rem;
 }
-.split-layout.reverse {
-  flex-direction: row-reverse;
-}
-.split {
-  flex: 1 1 50%;
-  min-height: 400px;
-}
-.split-image {
-  background-size: cover;
-  background-position: center;
-}
-.split-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 3rem 2rem;
-  background-color: var(--color-background);
-}
-.split-text h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+
+/* FOOTER */
+footer {
+  background: linear-gradient(90deg, #ffe394, #fcd1e0, #d3f0f2);
   color: var(--color-brown);
-}
-.split-text p {
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
-  color: #6d5847;
-}
-@media (max-width: 768px) {
-  .split {
-    flex: 1 1 100%;
-  }
+  padding: 2rem;
+  text-align: center;
 }
 
-/* Generic page hero for other pages - Mobile optimized */
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.footer-content p {
+  margin-bottom: 1rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-links img {
+  width: 28px;
+  height: 28px;
+}
+
+.footer-content .social-links img {
+  display: none;
+}
+
+/* PAGE HERO FOR OTHER PAGES */
 .page-hero {
-  /* Remove the swirl background; apply a subtle colour by default */
   background-color: var(--color-secondary);
   color: var(--color-brown);
   padding: 4rem 2rem 3rem;
   text-align: center;
-  /* Ensure proper sizing on mobile */
   background-size: cover;
   background-position: center;
   min-height: 40vh;
 }
+
 .page-hero h1 {
-  font-size: clamp(1.8rem, 4vw, 2.5rem); /* Responsive font size */
+  font-size: 2.5rem;
   margin-bottom: 0.5rem;
   line-height: 1.2;
 }
+
 .page-hero p {
-  font-size: clamp(0.9rem, 2.5vw, 1.2rem); /* Responsive font size */
+  font-size: 1.2rem;
   max-width: 700px;
   margin: 0 auto;
   line-height: 1.4;
 }
 
-/* Mobile page hero adjustments */
 @media (max-width: 768px) {
   .page-hero {
-    padding: 2rem 1rem 1.5rem;
-    min-height: 25vh;
+    min-height: 20vh;
+    padding: 2rem 1rem 1rem;
   }
   
   .page-hero h1 {
-    font-size: 1.6rem;
-    margin-bottom: 0.75rem;
+    font-size: 1.4rem;
   }
   
   .page-hero p {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    padding: 0 0.5rem;
+    font-size: 0.85rem;
   }
 }
 
-/* About page content */
+/* ABOUT PAGE CONTENT */
 .about-content {
   display: flex;
   flex-wrap: wrap;
@@ -1057,45 +1027,59 @@ footer {
   max-width: 1200px;
   margin: 0 auto;
 }
+
 .about-image,
 .about-text {
   flex: 1 1 300px;
 }
+
 .about-image img {
   width: 100%;
   border-radius: var(--radius-large);
   box-shadow: var(--shadow-light);
 }
+
 .about-text h2 {
   font-size: 2rem;
   margin-bottom: 0.75rem;
 }
+
 .about-text p {
   margin-bottom: 1rem;
   color: #6d5847;
 }
 
-/* Menu page styles */
+/* MENU PAGE STYLES */
 .menu-section {
   padding: 4rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
   text-align: center;
 }
+
 .menu-section h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
 }
+
+.menu-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  margin-top: 3rem;
+}
+
 .menu-section p {
   font-size: 1.1rem;
   margin-bottom: 2rem;
   color: #6d5847;
 }
+
 .menu-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 2rem;
 }
+
 .menu-item {
   background-color: var(--color-surface);
   border-radius: var(--radius-large);
@@ -1104,130 +1088,140 @@ footer {
   text-align: center;
   transition: transform var(--transition-time);
 }
+
 .menu-item:hover {
   transform: translateY(-4px);
 }
+
 .menu-item img {
   width: 100%;
   height: 200px;
   object-fit: cover;
 }
+
 .menu-item h3 {
   margin: 0.75rem 0;
   font-size: 1.2rem;
 }
+
 .menu-item p {
   font-size: 0.9rem;
   padding: 0 1rem 1.5rem;
   color: #6d5847;
 }
 
-/* Custom grid for the stackers portion of the menu page.  Force three columns on larger screens */
-/* Force three columns for the stackers grid on wider screens.  On smaller screens, the cards
-   will wrap and auto-fit. */
-/* Display three columns for stackers on wider screens.  On smaller screens cards will wrap naturally. */
+/* Custom grid for stackers */
 .menu-grid.stackers-grid {
   grid-template-columns: repeat(3, 1fr);
 }
+
 @media (max-width: 900px) {
   .menu-grid.stackers-grid {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
 }
 
-/* Restrict the width of stacker menu cards and center them.  These rules mimic the stacker page behaviour
-   so that the cards are a manageable size by default and then scale on hover. */
 .menu-grid.stackers-grid .menu-item {
-  /* Allow stacker cards to be wider to better showcase their images */
-  max-width: 300px;
+  max-width: 200px;
   margin: 0 auto;
+  flex: 0 0 auto;
 }
 
-/* When hovering over a stacker card on the menu page, enlarge the card and its image. */
+.menu-grid.stackers-grid .menu-item img {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  object-fit: contain;
+  display: block;
+}
+
 .menu-grid.stackers-grid .menu-item:hover {
   transform: scale(1.05);
 }
+
 .menu-grid.stackers-grid .menu-item:hover img {
   transform: scale(1.1);
 }
 
-/* Reduce the default image height for stacker menu items */
-.menu-grid.stackers-grid .menu-item img {
-  /* Ensure the full cup is visible without cropping.  Allow the image to scale naturally up to
-     a maximum height and contain within the card. */
-  height: auto;
-  /* Increase the maximum height for stacker images so drinks like Cosmic Crunch appear larger */
-  max-height: 350px;
-  object-fit: contain;
+.menu-grid.stackers-grid .menu-item h3 {
+  font-size: 1rem;
+  margin: 0.5rem 0;
 }
 
-/* Custom grid for the Dubai chocolate menu section.  Two items plus a "more options" card */
+.menu-grid.stackers-grid .menu-item p {
+  font-size: 0.9rem;
+  padding: 0 0.75rem 1rem;
+  line-height: 1.35;
+}
+
+/* Dubai grid */
 .menu-grid.dubai-grid {
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
-/* Taiyaki treats section: similar grid to other menu categories */
-.menu-grid.taiyaki-grid {
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-}
-.menu-grid.taiyaki-grid .menu-item {
-  /* Allow stacker cards to grow slightly larger on wide screens; this helps balance slender items like Cosmic Crunch */
-  max-width: 340px;
+.menu-grid.dubai-grid .menu-item {
+  max-width: 250px;
   margin: 0 auto;
   transition: transform var(--transition-time);
 }
-.menu-grid.taiyaki-grid .menu-item:hover {
+
+.menu-grid.dubai-grid .menu-item:hover {
   transform: scale(1.05);
 }
-.menu-grid.taiyaki-grid .menu-item img {
+
+.menu-grid.dubai-grid .menu-item img {
   height: auto;
   max-height: 250px;
-  object-fit: contain;
   transition: transform var(--transition-time);
+  object-fit: contain;
 }
-.menu-grid.taiyaki-grid .menu-item:hover img {
+
+.menu-grid.dubai-grid .menu-item:hover img {
   transform: scale(1.1);
 }
+
 .menu-grid.dubai-grid .more-dubai {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
 }
+
 .menu-grid.dubai-grid .more-dubai h3 {
   margin-bottom: 0.5rem;
 }
+
 .menu-grid.dubai-grid .more-dubai p {
   margin-bottom: 0;
 }
 
-/* Interactive scaling for Dubai menu items: normal size until hovered */
-.menu-grid.dubai-grid .menu-item {
+/* Taiyaki grid */
+.menu-grid.taiyaki-grid {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.menu-grid.taiyaki-grid .menu-item {
+  max-width: 340px;
+  margin: 0 auto;
   transition: transform var(--transition-time);
 }
-.menu-grid.dubai-grid .menu-item:hover {
+
+.menu-grid.taiyaki-grid .menu-item:hover {
   transform: scale(1.05);
 }
-.menu-grid.dubai-grid .menu-item img {
-  /* Ensure Dubai menu images show the full cup without cropping.  Use a maximum height rather than
-     a fixed height so the natural aspect ratio is preserved. */
+
+.menu-grid.taiyaki-grid .menu-item img {
   height: auto;
   max-height: 250px;
-  transition: transform var(--transition-time);
   object-fit: contain;
+  transition: transform var(--transition-time);
 }
-.menu-grid.dubai-grid .menu-item:hover img {
+
+.menu-grid.taiyaki-grid .menu-item:hover img {
   transform: scale(1.1);
 }
 
-/* Limit the width of Dubai menu cards and center them.  This keeps the cards from looking too large
-   on wide screens while still allowing them to expand on hover. */
-.menu-grid.dubai-grid .menu-item {
-  max-width: 250px;
-  margin: 0 auto;
-}
-
-/* Visit page layout */
+/* VISIT PAGE LAYOUT */
 .visit-info {
   display: flex;
   flex-direction: column;
@@ -1236,28 +1230,29 @@ footer {
   padding: 4rem 2rem;
   gap: 1rem;
 }
+
 .visit-info .location-logo {
   width: 200px;
   max-width: 60%;
   height: auto;
   margin-bottom: 1rem;
 }
+
 .visit-info .btn {
   margin-top: 1rem;
 }
 
-/* Full width map section on the Visit page */
 .map-full {
   width: 100%;
   margin: 0;
 }
+
 .map-full iframe {
   display: block;
   width: 100%;
   height: 60vh;
 }
 
-/* Layout for the visit page: display the location details and collage side‑by‑side */
 .visit-section {
   display: flex;
   flex-wrap: wrap;
@@ -1267,7 +1262,6 @@ footer {
   padding: 4rem 2rem;
 }
 
-/* The card containing the address and hours.  Allow it to grow and shrink equally with the image */
 .location-card {
   background-color: var(--color-surface);
   border-radius: var(--radius-large);
@@ -1276,16 +1270,15 @@ footer {
   flex: 1 1 45%;
   max-width: 600px;
   text-align: center;
+  font-size: 1.1rem;
 }
 
 .location-card .location-logo {
-  /* Increase the logo size for the visit card */
   width: 180px;
   height: auto;
   margin: 0 auto 1.5rem;
 }
 
-/* Container for the collage; fill the remaining horizontal space */
 .location-image {
   flex: 1 1 55%;
   display: flex;
@@ -1306,6 +1299,7 @@ footer {
     flex-direction: column;
     align-items: center;
   }
+  
   .location-card,
   .location-image {
     flex: 1 1 100%;
@@ -1313,123 +1307,119 @@ footer {
   }
 }
 
-/* Stackers page styles */
+.location-card h2 {
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+
+/* STACKERS PAGE STYLES */
 .stacker-section {
   padding: 4rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
   text-align: center;
-
-  /* Increase font size inside the visit card */
-  font-size: 1.1rem;
 }
 
-/* Adjust heading sizes within the visit card */
-.location-card h2 {
-  font-size: 2rem;
-  margin-top: 1rem;
-}
 .stacker-grid {
   display: grid;
-  /* Force three columns on larger screens but allow auto-fit behaviour on smaller screens.  Each card
-     occupies at least 280px of horizontal space and will wrap as needed. */
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
 }
+
 .stacker-item {
   background-color: var(--color-surface);
   border-radius: var(--radius-large);
   box-shadow: var(--shadow-light);
   overflow: hidden;
   transition: transform var(--transition-time);
-
-  /* Limit the width of each stacker card so that they appear smaller by default.  The cards are
-     centered within their grid column using margin:auto.  They will scale up slightly on hover. */
-  /* Make the stacker cards smaller by default.  They will expand on hover. */
   max-width: 250px;
   margin: 0 auto;
 }
-/* On hover, enlarge the entire stacker card slightly */
+
 .stacker-item:hover {
   transform: scale(1.05);
 }
-/* Smaller default image height with smooth scaling on hover */
+
 .stacker-item img {
   width: 100%;
-  /* Reduce the default image height.  Cards zoom on hover for a dramatic effect. */
   height: 180px;
-  /* Display the full height of each stacker image without cropping */
   object-fit: contain;
   transition: transform var(--transition-time);
 }
+
 .stacker-item:hover img {
   transform: scale(1.1);
 }
+
 .stacker-item h3 {
   font-size: 1.3rem;
   margin: 0.75rem 0;
 }
+
 .stacker-item p {
   font-size: 0.9rem;
   padding: 0 1rem 1.5rem;
   color: #6d5847;
 }
 
-/* Adjust the stacker grid for smaller screens: reduce to auto-fit columns */
 @media (max-width: 900px) {
   .stacker-grid {
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   }
 }
 
-/* Location & contact page */
+/* LOCATION & CONTACT PAGE */
 .location-section {
   padding: 4rem 2rem;
   max-width: 1000px;
   margin: 0 auto;
   text-align: center;
 }
+
 .location-content {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
   align-items: center;
 }
+
 .map-container {
   flex: 1 1 300px;
-  /* Increase height so the embedded map fills the entire card.  A fixed height of 450px ensures that
-     the map does not collapse when viewed on larger screens. */
   height: 450px;
   min-height: 450px;
   border-radius: var(--radius-large);
   overflow: hidden;
   box-shadow: var(--shadow-light);
 }
+
 .location-info {
   flex: 1 1 300px;
   text-align: left;
 }
+
 .location-info h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
 }
+
 .location-info p {
   margin-bottom: 1rem;
   color: #6d5847;
 }
 
-/* Contact form styles */
+/* CONTACT FORM STYLES */
 .contact-form {
   margin-top: 2rem;
 }
+
 .contact-form label {
   display: block;
   margin-bottom: 0.25rem;
   font-weight: 600;
-  /* Align labels to the left of the input fields */
   text-align: left;
   margin-left: 0.25rem;
 }
+
 .contact-form input,
 .contact-form textarea {
   width: 100%;
@@ -1439,10 +1429,12 @@ footer {
   margin-bottom: 1rem;
   font-family: inherit;
 }
+
 .contact-form textarea {
   resize: vertical;
   height: 120px;
 }
+
 .contact-form button {
   background-color: var(--color-primary);
   color: #ffffff;
@@ -1454,218 +1446,47 @@ footer {
   cursor: pointer;
   transition: background-color var(--transition-time);
 }
+
 .contact-form button:hover {
-  /* Slightly darker orange for hover state */
   background-color: #d76c3f;
 }
 
-/* === Final: Equal-sized stackers (no Cosmic Crunch exception) === */
-.menu-grid.stackers-grid .menu-item { 
-  max-width: 200px !important; 
-  margin: 0 auto !important; 
-  flex: 0 0 auto !important;
-}
-.menu-grid.stackers-grid .menu-item img { 
-  width: 100% !important; 
-  height: auto !important; 
-  max-height: 200px !important; 
-  object-fit: contain !important; 
-  display: block !important;
-}
-
-/* Tighter typography so text fits the smaller cards cleanly */
-.menu-grid.stackers-grid .menu-item h3 { 
-  font-size: 1rem !important; 
-  margin: 0.5rem 0 !important; 
-}
-.menu-grid.stackers-grid .menu-item p { 
-  font-size: 0.9rem !important; 
-  padding: 0 0.75rem 1rem !important; 
-  line-height: 1.35 !important; 
-}
-
-/* === Home page: subtle image zoom on hover === */
+/* IMAGE HOVER EFFECTS */
 .feature-item img,
 .flavor-card img {
   transition: transform 0.25s ease;
 }
+
 .feature-item:hover img,
 .flavor-card:hover img {
   transform: scale(1.04);
   will-change: transform;
-  /* keep rounded corners when parents have radius */
   transform-origin: center center;
   pointer-events: none;
 }
 
-/* Cursor hints when cards are clickable via data-link */
 .feature-item[data-link],
 .flavor-card[data-link] {
   cursor: pointer;
 }
 
-/* === Scoped: Signature Stackers on the menu page only === */
-.menu-grid.stackers-grid .menu-item { 
-  max-width: 200px; 
-  margin: 0 auto; 
-  flex: 0 0 auto;
-}
-.menu-grid.stackers-grid .menu-item img {
-  width: 100%;
-  height: auto;
-  max-height: 200px;
-  object-fit: contain;
-  display: block;
-}
-.menu-grid.stackers-grid .menu-item h3 {
-  font-size: 1rem;
-  margin: 0.5rem 0;
-}
-.menu-grid.stackers-grid .menu-item p {
-  font-size: 0.9rem;
-  padding: 0 0.75rem 1rem;
-  line-height: 1.35;
-}
-
-/* Ensure feature layout looks balanced and the image is reasonably large */
-.feature-item {
-  align-items: center;
-}
-.feature-item img {
-  max-width: 360px;
-  height: auto;
-  display: block;
-}
-.feature-text {
-  max-width: 520px;
-}
-
-/* Slightly larger image for the Stacker feature only (by alt attribute match) */
 img[alt="Signature Stackers"] {
   max-width: 400px;
 }
 
-.features .feature-item {
-  width: 340px;               /* hard equal width */
-  background: var(--color-surface);
-  border-radius: var(--radius-large);
-  box-shadow: var(--shadow-light);
-  padding: 1.5rem;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* ANCHOR SCROLL OFFSETS */
+#stackers, #dubai, #taiyaki, #flavors {
+  scroll-margin-top: 120px;
 }
 
-/* Create a consistent "image box" height so cards align */
-.features .feature-item img {
-  height: 240px;              /* fixed visual height */
-  width: auto;
-  max-width: 100%;
-  object-fit: contain;
-  transition: transform 0.25s ease;
+#michigan-pothole {
+  scroll-margin-top: 120px;
 }
 
-.features .feature-item img:hover { transform: scale(1.1); cursor: pointer; }
-
-.features .feature-text { max-width: 28ch; }
-
-@media (max-width: 1100px) {
-  .features { grid-template-columns: repeat(2, 340px); }
-}
-@media (max-width: 740px) {
-  .features { grid-template-columns: 1fr; }
-  .features .feature-item { width: 100%; }
-  .features .feature-item img { height: 220px; }
+#visit-card {
+  scroll-margin-top: 120px;
 }
 
-/* === Homepage Features: 3-up rows; image left, text right; hover scale; clickable imgs === */
-.features {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  align-items: stretch;
-  padding: 0; /* container already padded by .feature-section */
-}
-@media (max-width: 1100px) { .features { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 720px)  { .features { grid-template-columns: 1fr; } }
-
-.features .feature-item {
-  display: grid;
-  grid-template-columns: 40% 1fr;
-  gap: 1.25rem;
-  align-items: center;
-  background: var(--color-surface);
-  border-radius: var(--radius-large);
-  box-shadow: var(--shadow-light);
-  padding: 1.5rem;
-  width: 100%;
-}
-@media (max-width: 720px) {
-  .features .feature-item { grid-template-columns: 1fr; text-align: center; }
-}
-
-.features .feature-item > a { display: block; }
-.features .feature-item img {
-  width: 100%;
-  height: auto;
-  max-height: 260px;
-  object-fit: contain;
-  transition: transform 0.25s ease;
-}
-.features .feature-item img:hover { transform: scale(1.08); cursor: pointer; }
-
-.features .feature-text { text-align: left; max-width: 36ch; }
-@media (max-width: 720px) { .features .feature-text { text-align: center; max-width: none; } }
-
-.feature-item img,
-.flavor-card img { transition: transform 0.25s ease; }
-.feature-item:hover img,
-.flavor-card:hover img { transform: scale(1.04); }
-
-/* Reasonable anchor offsets for sticky header landing (120px instead of 800px) */
-#stackers, #dubai, #taiyaki, #flavors { scroll-margin-top: 120px; }
-#michigan-pothole { scroll-margin-top: 120px; }
-#visit-card { scroll-margin-top: 120px; }
-#top { scroll-margin-top: 0; }
-/* Add these fixes to the BOTTOM of your existing style.css file */
-/* They will override the problematic parts without removing your existing styles */
-
-/* Fix hero video positioning */
-/* Fix mobile navigation */
-@media (max-width: 768px) {
-  .nav-toggle {
-    width: 50px !important;
-    height: 50px !important;
-    padding: 10px !important;
-  }
-  
-  .nav-links {
-    display: none !important;
-  }
-  
-  .nav-links li a {
-    padding: 15px 20px !important;
-    font-size: 16px !important;
-    min-height: 44px !important;
-  }
-}
-
-/* Fix mobile font scaling */
-@media (max-width: 768px) {
-  .hero-content h1 {
-    font-size: 2rem !important;
-  }
-  
-  .hero-content p {
-    font-size: 1rem !important;
-  }
-  
-  .page-hero h1 {
-    font-size: 1.6rem !important;
-  }
-  
-  .page-hero p {
-    font-size: 0.95rem !important;
-  }
+#top {
+  scroll-margin-top: 0;
 }
