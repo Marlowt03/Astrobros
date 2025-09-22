@@ -1,0 +1,373 @@
+/*
+ * Global styles for AstroBros website
+ *
+ * This stylesheet defines the layout and appearance of the
+ * homepage, menu page and location page. It also fixes the issues
+ * reported by ensuring our product cards span the full width in a 3‑column
+ * grid without any side gaps, normalising anchor offsets for sticky
+ * headers, and providing sensible sizing for the social cards at the
+ * bottom of the page. Feel free to adjust colour variables to suit
+ * your branding.
+ */
+
+/* CSS variables for easier theming */
+:root {
+  --brand-orange: #ff8a00;
+  --brand-brown: #4e3524;
+  --background-light: #fdf5f2;
+  --text-dark: #2e2e2e;
+  --text-light: #ffffff;
+}
+
+/* Reset some default styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-dark);
+  background-color: var(--background-light);
+  scroll-behavior: smooth;
+}
+
+/* Header / Navigation */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--background-light);
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.brand-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--brand-brown);
+  text-decoration: none;
+}
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: var(--brand-brown);
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+  color: var(--brand-orange);
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  width: 24px;
+  height: 2px;
+  background-color: var(--brand-brown);
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--background-light);
+    flex-direction: column;
+    width: 200px;
+    border-radius: 0 0 0.5rem 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+  }
+  .nav-links.open {
+    display: flex;
+  }
+  .nav-toggle {
+    display: flex;
+  }
+}
+
+/* Hero section */
+.hero {
+  height: 80vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--text-light);
+  overflow: hidden;
+  margin-top: 80px; /* offset for fixed header */
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: -1;
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  font-size: 1.125rem;
+  max-width: 600px;
+}
+
+.hero-buttons {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Button styling */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 2rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn.primary {
+  background-color: var(--brand-orange);
+  color: var(--text-light);
+}
+
+.btn.primary:hover {
+  background-color: darken(var(--brand-orange), 10%);
+}
+
+.btn.secondary {
+  background-color: var(--text-light);
+  color: var(--brand-orange);
+  border: 2px solid var(--brand-orange);
+}
+
+.btn.secondary:hover {
+  background-color: var(--brand-orange);
+  color: var(--text-light);
+}
+
+/* Feature section */
+.feature-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0;
+  padding: 0;
+}
+
+.feature-item {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: var(--background-light);
+}
+
+.feature-item img {
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.feature-item h3 {
+  margin: 1rem 0 0.5rem;
+  font-size: 1.5rem;
+  color: var(--brand-brown);
+}
+
+.feature-item p {
+  flex-grow: 1;
+  font-size: 0.95rem;
+  color: var(--brand-brown);
+  margin-bottom: 1.5rem;
+}
+
+/* Social media section */
+.social-section {
+  padding: 4rem 2rem;
+  background-color: var(--background-light);
+  text-align: center;
+}
+
+.social-section h2 {
+  font-size: 2rem;
+  color: var(--brand-brown);
+  margin-bottom: 0.5rem;
+}
+
+.social-section p {
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  color: var(--brand-brown);
+}
+
+/*
+ * Layout for the social cards. Using flex instead of grid allows each card
+ * to take on its own natural height rather than stretching to match the
+ * tallest card (e.g. the Instagram embed). Wrapping is enabled so the
+ * cards will stack on smaller screens. align-items:flex-start keeps the
+ * heights independent.
+ */
+.social-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.social-card {
+  background-color: var(--text-light);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Keep the embed card height reasonable; other cards are allowed to shrink */
+.social-card.embed-card iframe {
+  width: 100%;
+  height: 350px;
+  border: none;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.social-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 1rem;
+}
+
+.social-card h3 {
+  margin: 0.5rem 0;
+  font-size: 1.25rem;
+  color: var(--brand-brown);
+}
+
+.social-card p {
+  margin: 0 0 1rem;
+  color: var(--brand-brown);
+}
+
+/* Menu page layout */
+.menu-item {
+  padding: 4rem 2rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.menu-item h2 {
+  font-size: 2rem;
+  color: var(--brand-brown);
+  margin-bottom: 1rem;
+}
+
+.menu-item p {
+  max-width: 800px;
+  margin-bottom: 1.5rem;
+}
+
+.menu-item img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Location page */
+.location-container {
+  padding: 4rem 2rem;
+}
+
+.location-card {
+  background-color: var(--text-light);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+.location-card h2 {
+  margin-bottom: 1rem;
+  color: var(--brand-brown);
+}
+
+/* Anchor scroll offsets for fixed header */
+/* Setting scroll-margin-top ensures anchors are not hidden behind the fixed header */
+#visit,
+#stackers,
+#dubai,
+#taiyaki,
+#michigan-pothole,
+#flavors {
+  scroll-margin-top: 120px;
+}
+
+@media (max-width: 992px) {
+  .feature-section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .social-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .feature-section {
+    grid-template-columns: 1fr;
+  }
+  .social-cards {
+    grid-template-columns: 1fr;
+  }
+}
