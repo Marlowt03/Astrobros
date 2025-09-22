@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Menu – AstroBros</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body id="top">
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="index.html">ASTROBROS</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a class="active" href="menu.html">Menu</a></li>
+        <li><a href="location.html#visit-card">Visit</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+    <div class="nav-underline"></div>
+  </header>
+
+  <main class="container">
+    <section class="menu-section" id="stackers">
+      <div class="section-head"><h2>Signature Stackers</h2></div>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <img src="images/stacker_cosmic.png" alt="Cosmic Crunch" />
+          <h3>Cosmic Crunch</h3>
+          <p>Crunch mix folded into vanilla, topped with whipped cream and sprinkles.</p>
+        </div>
+        <div class="menu-item">
+          <img src="images/stacker_biscoff.png" alt="Biscoff Cookie Butter" />
+          <h3>Biscoff Cookie Butter</h3>
+          <p>Vanilla layered with cookie butter swirls and Biscoff crumble.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu-section" id="dubai">
+      <div class="section-head"><h2>Dubai Chocolate</h2></div>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <img src="images/dubai_nachos.png" alt="Dubai Ice Cream Nachos" />
+          <h3>Ice Cream Nachos</h3>
+          <p>Waffle chips topped with rich chocolate, sauces and mix‑ins.</p>
+        </div>
+        <div class="menu-item">
+          <img src="images/dubai_blast.png" alt="Brownie Blast" />
+          <h3>Brownie Blast</h3>
+          <p>Chocolate ice cream layered with brownie pieces and fudge.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu-section" id="taiyaki">
+      <div class="section-head"><h2>Taiyaki</h2></div>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <img src="images/taiyaki_cone.png" alt="Taiyaki Cone" />
+          <h3>Taiyaki Cone</h3>
+          <p>Warm fish‑shaped cone filled with soft serve and toppings.</p>
+        </div>
+        <div class="menu-item">
+          <img src="images/taiyaki_cup.png" alt="Taiyaki Cup" />
+          <h3>Taiyaki Cup</h3>
+          <p>All the taiyaki goodness in an easy cup.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Flavors top so Explore button lands at the right place -->
+    <section class="menu-section" id="flavors">
+      <div class="section-head"><h2>Ice Cream Flavors</h2></div>
+      <div class="menu-grid">
+        <div class="menu-item" id="michigan-pothole">
+          <img src="images/michigan_pothole.png" alt="Michigan Pothole" />
+          <h3>Michigan Pothole</h3>
+          <p>Chocolate base with brownie chunks and fudge swirls.</p>
+        </div>
+        <div class="menu-item">
+          <img src="images/cleveland_pothole.png" alt="Cleveland Pothole" />
+          <h3>Cleveland Pothole</h3>
+          <p>Our local twist on the chocolatey pothole favorite.</p>
+        </div>
+        <div class="menu-item">
+          <img src="images/vanilla.png" alt="Vanilla" />
+          <h3>Vanilla</h3>
+          <p>Simple and sublime, made with real vanilla beans.</p>
+        </div>
+        <div class="menu-item">
+          <img src="images/strawberry.png" alt="Strawberry" />
+          <h3>Strawberry</h3>
+          <p>Sweet strawberries blended into a smooth creamy base.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> AstroBros Ice Cream &amp; Coffee</p>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
