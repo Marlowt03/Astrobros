@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AstroBros – Out‑of‑This‑World Ice Cream</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+  <!-- Script -->
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header class="site-header">
+    <nav class="navbar">
+      <a href="index.html" class="logo brand-name">ASTROBROS</a>
+      <ul class="nav-links">
+        <li><a class="active" href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="location.html">Visit</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Main content -->
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <video
+        id="heroVideo"
+        class="hero-video"
+        autoplay
+        muted
+        playsinline
+        loop
+        preload="auto"
+      >
+        <source src="./videos/astrobros_hero.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div class="overlay"></div>
+      <div class="hero-content">
+        <h1>Welcome to AstroBros</h1>
+        <p>Out‑of‑this‑world ice cream served fresh in Parma.</p>
+        <div class="hero-buttons">
+          <a class="btn primary" href="menu.html">Explore Our Menu</a>
+          <!-- Order button takes the visitor directly to the visit section on the Visit page -->
+          <a class="btn secondary" href="location.html#visit">Order Now</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature Section: three products side by side with no gaps -->
+    <section class="feature-section">
+      <!-- Stacker Card -->
+      <div class="feature-item">
+        <a href="menu.html#stackers" class="feature-link">
+          <img
+            src="./images/stacker.jpg"
+            alt="Stacker ice cream"
+            loading="lazy"
+          />
+        </a>
+        <h3>Stacker</h3>
+        <p>
+          Layers of our creamy soft‑serve stacked with toppings and finished
+          with your choice of sauce.
+        </p>
+        <a href="menu.html#stackers" class="btn primary">View on Menu</a>
+      </div>
+      <!-- Dubai Chocolate Card -->
+      <div class="feature-item">
+        <a href="menu.html#dubai" class="feature-link">
+          <img
+            src="./images/dubai-chocolate.jpg"
+            alt="Dubai chocolate shake"
+            loading="lazy"
+          />
+        </a>
+        <h3>Dubai Chocolate</h3>
+        <p>
+          Rich chocolate soft‑serve inspired by the flavours of Dubai. A
+          decadent treat for any chocolate lover.
+        </p>
+        <a href="menu.html#dubai" class="btn primary">View on Menu</a>
+      </div>
+      <!-- Taiyaki Card -->
+      <div class="feature-item">
+        <a href="menu.html#taiyaki" class="feature-link">
+          <img
+            src="./images/taiyaki.jpg"
+            alt="Taiyaki ice cream"
+            loading="lazy"
+          />
+        </a>
+        <h3>Taiyaki</h3>
+        <p>
+          Warm fish‑shaped waffles filled with Nutella, custard or red bean
+          paste and crowned with soft‑serve.
+        </p>
+        <a href="menu.html#taiyaki" class="btn primary">View on Menu</a>
+      </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="social-section">
+      <h2>Discover Us on Social Media!</h2>
+      <p>
+        Follow our adventures and see what influencers have to say about our
+        cosmic creations.
+      </p>
+      <div class="social-cards">
+        <!-- Instagram Embed Card -->
+        <div class="social-card embed-card">
+          <!-- You can replace this embed with your own Instagram post -->
+          <iframe
+            src="https://www.instagram.com/p/CN_your_post/embed"
+            allowtransparency="true"
+            frameborder="0"
+            scrolling="no"
+          ></iframe>
+          <div class="social-card-content">
+            <h3>Influencer Video</h3>
+            <p>Check out what influencers have to say about us.</p>
+          </div>
+        </div>
+        <!-- TikTok Card -->
+        <div class="social-card">
+          <img
+            src="./images/tiktok-icon.svg"
+            alt="TikTok icon"
+            class="social-icon"
+            loading="lazy"
+          />
+          <h3>TikTok</h3>
+          <p>@astrobroscafe</p>
+          <a
+            href="https://www.tiktok.com/@astrobroscafe"
+            class="btn primary"
+            target="_blank"
+            rel="noopener"
+            >Follow</a
+          >
+        </div>
+        <!-- Instagram Follow Card -->
+        <div class="social-card">
+          <img
+            src="./images/instagram-icon.svg"
+            alt="Instagram icon"
+            class="social-icon"
+            loading="lazy"
+          />
+          <h3>Instagram</h3>
+          <p>@astrobroscafe</p>
+          <a
+            href="https://www.instagram.com/astrobroscafe"
+            class="btn primary"
+            target="_blank"
+            rel="noopener"
+            >Follow</a
+          >
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
