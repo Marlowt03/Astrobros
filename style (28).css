@@ -1,0 +1,68 @@
+/* Base */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:#3b2a23;background:#fff7f1}
+
+/* Layout helpers */
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+.navbar{position:sticky;top:0;z-index:50;background:#ffe08c;border-bottom:1px solid rgba(0,0,0,.06)}
+.nav-wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{font-weight:800;letter-spacing:.5px;color:#3b2a23;text-decoration:none}
+.nav a{margin-left:18px;color:#3b2a23;text-decoration:none;font-weight:600}
+.nav a.active{border-bottom:2px solid #3b2a23}
+
+/* Buttons */
+.btn{display:inline-block;padding:.85rem 1.35rem;border-radius:999px;text-decoration:none;font-weight:700}
+.btn.primary{background:#ff8b5e;color:#fff}
+.btn.primary:hover{filter:brightness(.95)}
+.btn.secondary{background:#fff;border:2px solid #ff8b5e;color:#ff8b5e}
+.btn.link{color:#3b2a23;text-decoration:underline;font-weight:700}
+
+/* Hero */
+.hero{position:relative;min-height:56vh;display:flex;align-items:center}
+.video-wrapper{position:absolute;inset:0;overflow:hidden}
+.hero-video{width:100%;height:100%;object-fit:cover}
+.overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.45),rgba(0,0,0,.2))}
+.hero-content{position:relative;color:#fff;padding:64px 0}
+.hero-buttons .btn{margin-right:12px}
+
+/* Category grid */
+.category-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin:48px auto}
+.category-card{background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 10px 28px rgba(0,0,0,.06);text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:transform .25s ease}
+.category-card:hover{transform:translateY(-4px)}
+.category-card img{width:100%;height:220px;object-fit:cover}
+.category-card .content{padding:18px}
+.category-action{display:inline-block;margin-top:10px;padding:.55rem 1.1rem;border-radius:999px;background:#ff8b5e;color:#fff;font-weight:700}
+
+/* Flavor of the Month */
+.section{margin:64px auto}
+.flavor{display:grid;grid-template-columns:420px 1fr;gap:32px;align-items:center}
+.flavor-img{width:100%;height:auto;display:block}
+.cta-row .btn{margin-right:10px}
+
+/* Menu */
+.main-headline{margin:32px 0 18px 0}
+.section-title{margin:46px 0 12px 0}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.menu-item{background:#fff;border-radius:22px;box-shadow:0 10px 28px rgba(0,0,0,.06);padding:18px}
+.menu-item img{width:100%;height:220px;object-fit:cover;border-radius:14px}
+
+/* Visit */
+.visit-grid{display:grid;grid-template-columns:380px 1fr;gap:28px;margin:28px 0 64px}
+.visit-card{background:#fff;border-radius:22px;box-shadow:0 10px 28px rgba(0,0,0,.06);padding:22px}
+.visit-photos{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.visit-photos img{width:100%;height:260px;object-fit:cover;border-radius:14px}
+
+.footer{padding:48px 0;color:#6a5244}
+
+/* Anchor landing offsets */
+.scroll-offset{scroll-margin-top:800px}
+.jump-offset{display:block;height:560px;margin-top:-560px}
+#orderSection{scroll-margin-top:560px}
+#michigan-pothole{scroll-margin-top:800px}
+
+@media (max-width:900px){
+  .category-grid{grid-template-columns:1fr}
+  .flavor{grid-template-columns:1fr}
+  .visit-grid{grid-template-columns:1fr}
+}
