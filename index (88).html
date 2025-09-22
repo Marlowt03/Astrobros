@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AstroBros Ice Cream</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="index.html">ASTROBROS</a>
+      <ul class="nav-links">
+        <li><a class="active" href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="location.html#visit-card">Visit</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+    <div class="nav-underline"></div>
+  </header>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero">
+    <div class="video-wrapper">
+      <video id="heroVideo" class="hero-video" autoplay muted playsinline loop preload="metadata">
+        <source src="videos/astrobros_hero.m4v" type="video/mp4" />
+        <source src="videos/astrobros_hero.m4v" type="video/x-m4v" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="overlay"></div>
+    <div class="hero-content container">
+      <h1>Welcome to AstroBros</h1>
+      <p>Out-of-this-world ice cream served fresh in Parma.</p>
+      <div class="hero-buttons">
+        <a class="btn primary" href="menu.html#flavors">Explore Our Menu</a>
+        <a class="btn secondary" href="location.html#visit-card">Order Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Features ===== -->
+  <section class="features container">
+    <div class="feature-item">
+      <a class="feature-media" href="menu.html#stackers">
+        <img src="images/feature_stacker.png" alt="Signature Stackers" />
+      </a>
+      <div class="feature-text">
+        <h2>Stacker Menu</h2>
+        <p>Layered creations with sauces, mix‑ins, and whipped cream.</p>
+        <a class="btn" href="menu.html#stackers">Explore Stackers</a>
+      </div>
+    </div>
+
+    <div class="feature-item">
+      <a class="feature-media" href="menu.html#dubai">
+        <img src="images/feature_dubai.png" alt="Dubai Chocolate" />
+      </a>
+      <div class="feature-text">
+        <h2>Dubai Chocolate Menu</h2>
+        <p>Bold chocolate, brownie blasts, sundaes, and more.</p>
+        <a class="btn" href="menu.html#dubai">Explore Dubai</a>
+      </div>
+    </div>
+
+    <div class="feature-item">
+      <a class="feature-media" href="menu.html#taiyaki">
+        <img src="images/feature_taiyaki.png" alt="Taiyaki Treats" />
+      </a>
+      <div class="feature-text">
+        <h2>Taiyaki Treats</h2>
+        <p>Fish‑shaped cones and cups with your favorite flavors.</p>
+        <a class="btn" href="menu.html#taiyaki">Explore Taiyaki</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Home Flavor Highlight (Pothole) ===== -->
+  <section class="home-flavor container">
+    <div class="flavor-card">
+      <a class="flavor-media" href="menu.html#michigan-pothole">
+        <img src="images/pothole_home.png" alt="Michigan Pothole" />
+      </a>
+      <div class="flavor-text">
+        <h3>Michigan / Cleveland Pothole</h3>
+        <p>Chocolate base, fudge swirls, brownie chunks — a crowd favorite.</p>
+        <div class="flavor-actions">
+          <a class="btn primary" href="location.html#visit-card">Try it now</a>
+          <a class="btn" href="menu.html#michigan-pothole">View on Menu</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> AstroBros Ice Cream &amp; Coffee</p>
+    </div>
+  </footer>
+
+  <!-- ===== Hero autoplay safeguard ===== -->
+  <script>
+    (function () {
+      const v = document.getElementById('heroVideo');
+      if (!v) return;
+      v.muted = true;
+      const boot = () => {
+        const p = v.play && v.play();
+        if (p && typeof p.catch === 'function') {
+          p.catch(() => {
+            const kick = () => { v.play && v.play().catch(()=>{}); };
+            window.addEventListener('pointerdown', function once() {
+              window.removeEventListener('pointerdown', once);
+              kick();
+            }, { once: true });
+          });
+        }
+      };
+      if (document.readyState === 'complete' || document.readyState === 'interactive') boot();
+      else document.addEventListener('DOMContentLoaded', boot);
+    })();
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
