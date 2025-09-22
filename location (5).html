@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AstroBros – Visit Us</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar">
+      <a href="index.html" class="logo brand-name">ASTROBROS</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a class="active" href="location.html">Visit</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </header>
+  <main style="margin-top: 80px;">
+    <div class="location-container">
+      <section id="visit" class="location-card">
+        <h1>Our Location</h1>
+        <address>
+          7725&nbsp;W&nbsp;Ridgewood&nbsp;Dr<br />
+          Parma,&nbsp;OH&nbsp;44134<br />
+          United&nbsp;States
+        </address>
+        <h2>Hours</h2>
+        <ul>
+          <li>Mon–Thu: 11am – 9pm</li>
+          <li>Fri–Sat: 11am – 10pm</li>
+          <li>Sun: 12pm – 8pm</li>
+        </ul>
+        <p><strong>Phone:</strong> <a href="tel:+14405550123">(440)&nbsp;555‑0123</a></p>
+        <div class="hero-buttons" style="justify-content:flex-start;">
+          <a href="tel:+14405550123" class="btn primary" style="margin-right:1rem;">Call us to place an order</a>
+          <a
+            href="https://maps.apple.com/?address=7725%20W%20Ridgewood%20Dr%2C%20Parma%2C%20OH%2044134"
+            class="btn secondary"
+            target="_blank"
+            rel="noopener"
+            >Get directions on Apple Maps</a
+          >
+        </div>
+      </section>
+      <!-- Plan Your Visit card (no special anchor needed now that the first card carries the visit anchor) -->
+      <section class="location-card">
+        <h2>Plan Your Visit</h2>
+        <p>
+          Stop by AstroBros to experience our cosmic ice cream creations first‑hand.
+          You can call ahead to place an order or just drop in during our open
+          hours.
+        </p>
+        <a href="tel:+14405550123" class="btn primary">Order Now</a>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
