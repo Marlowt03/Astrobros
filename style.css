@@ -322,7 +322,7 @@ header {
   }
 }
 
-/* BUTTON STYLES */
+/* BUTTON STYLES - ENHANCED */
 .btn {
   display: inline-block;
   padding: 0.75rem 1.5rem;
@@ -331,6 +331,9 @@ header {
   text-transform: uppercase;
   font-size: 0.9rem;
   transition: background-color var(--transition-time), color var(--transition-time);
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
 }
 
 .btn.primary {
@@ -356,6 +359,16 @@ header {
 .btn.small {
   font-size: 0.85rem;
   padding: 0.5rem 1rem;
+}
+
+/* Default button style (for buttons without primary/secondary class) */
+.btn:not(.primary):not(.secondary) {
+  background-color: var(--color-primary);
+  color: #ffffff;
+}
+
+.btn:not(.primary):not(.secondary):hover {
+  background-color: #d76c3f;
 }
 
 /* FEATURE CARDS SECTION */
