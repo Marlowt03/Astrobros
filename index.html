@@ -24,7 +24,26 @@
   cursor: pointer;
 }
 </style>
-
+<script>
+window.addEventListener('load', function() {
+  var toggle = document.querySelector('.nav-toggle');
+  var links = document.querySelector('.nav-links');
+  
+  if (toggle && links) {
+    toggle.onclick = function() {
+      if (links.style.display === 'flex') {
+        links.style.display = 'none';
+        toggle.classList.remove('open');
+      } else {
+        links.style.display = 'flex';
+        links.style.opacity = '1';
+        links.style.visibility = 'visible';
+        toggle.classList.add('open');
+      }
+    };
+  }
+});
+</script>
 </head>
 <body>
   <!-- Header / Nav -->
