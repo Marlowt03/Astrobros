@@ -1,68 +1,59 @@
-/*
- * Small helper script for AstroBros website
- *
- * Handles mobile navigation toggling and ensures the hero video
- * attempts to play automatically. Also handles anchor scrolling
- * with proper offsets for the sticky header.
- */
-
-document.addEventListener('DOMContentLoaded', () => {
-  // Mobile navigation toggle - Simplified for iPhone
-  const navToggle = document.querySelector('.nav-toggle');
-  const navLinks = document.querySelector('.nav-links');
+document.addEventListener('DOMContentLoaded', function() {
+  // Ultra-simple mobile navigation
+  var button = document.querySelector('.nav-toggle');
+  var menu = document.querySelector('.nav-links');
   
-  if (navToggle && navLinks) {
-    // Simple click handler - no preventDefault or other interference
-    navToggle.onclick = function() {
-      navLinks.classList.toggle('open');
-      navToggle.classList.toggle('open');
-    };
-    
-    // Close menu when clicking on nav links
-    navLinks.addEventListener('click', function() {
-      navLinks.classList.remove('open');
-      navToggle.classList.remove('open');
+  if (button && menu) {
+    button.addEventListener('click', function() {
+      if (menu.style.opacity === '1') {
+        menu.style.opacity = '0';
+        menu.style.visibility = 'hidden';
+        button.classList.remove('open');
+      } else {
+        menu.style.opacity = '1';
+        menu.style.visibility = 'visible';
+        button.classList.add('open');
+      }
     });
   }
 
-  // Try to auto‑play the hero video. On some browsers autoplay
-  // restrictions require muted video and may still reject the play
-  // promise until the user interacts with the page. In that case,
-  // register a one‑time interaction handler that retries playback.
-  const heroVideo = document.getElementById('heroVideo');
+  // Hero video functionality
+  var heroVideo = document.getElementById('heroVideo');
   if (heroVideo) {
-    const attemptPlay = () => {
-      const p = heroVideo.play?.();
-      if (p !== undefined) {
-        p.catch(() => {
-          /* ignore errors; we'll try again after a user gesture */
+    var attemptPlay = function() {
+      var promise = heroVideo.play();
+      if (promise !== undefined) {
+        promise.catch(function() {
+          // Video autoplay was prevented, that's okay
         });
       }
     };
-    // initial attempt
+    
+    // Try to play initially
     attemptPlay();
-    // on user interaction, attempt again
-    const startOnInteract = () => {
+    
+    // Try again on user interaction
+    var playOnClick = function() {
       attemptPlay();
-      window.removeEventListener('click', startOnInteract);
-      window.removeEventListener('touchstart', startOnInteract);
+      document.removeEventListener('click', playOnClick);
+      document.removeEventListener('touchstart', playOnClick);
     };
-    window.addEventListener('click', startOnInteract, { passive: true });
-    window.addEventListener('touchstart', startOnInteract, { passive: true });
+    
+    document.addEventListener('click', playOnClick);
+    document.addEventListener('touchstart', playOnClick);
   }
-
-  // Anchor scrolling function
+  
+  // Anchor scrolling for menu links
   function scrollToAnchor(hash) {
     if (!hash) return;
     
-    const targetId = hash.replace('#', '');
-    const target = document.getElementById(targetId);
+    var targetId = hash.replace('#', '');
+    var target = document.getElementById(targetId);
     
     if (target) {
-      // Wait a bit for any page layout to settle
-      setTimeout(() => {
-        const headerOffset = 140; // Account for sticky header + some padding
-        const targetPosition = target.offsetTop - headerOffset;
+      setTimeout(function() {
+        var headerOffset = 140;
+        var targetPosition = target.offsetTop - headerOffset;
         
         window.scrollTo({
           top: Math.max(0, targetPosition),
@@ -71,14 +62,14 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 100);
     }
   }
-
-  // Handle initial page load with hash
+  
+  // Handle anchor links on page load
   if (window.location.hash) {
     scrollToAnchor(window.location.hash);
   }
-
-  // Handle hash changes (when clicking anchor links)
-  window.addEventListener('hashchange', () => {
+  
+  // Handle anchor links when clicked
+  window.addEventListener('hashchange', function() {
     scrollToAnchor(window.location.hash);
   });
 });
